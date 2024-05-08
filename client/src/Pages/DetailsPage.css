@@ -1,0 +1,49 @@
+/* DetailsPage.css */
+* {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+.detailsPage {
+    margin-top: 20px;
+    
+    
+}
+.wrapper {
+    
+    max-width: 600px;
+    
+    margin: 5% auto ;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  input[type='text'],
+  input[type='date'],
+  input[type='time'],
+  button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  button {
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  
