@@ -1,0 +1,45 @@
+# Node modules
+node_modules/
+
+# Logs
+logs/
+*.log
+
+# Environment variables
+.env
+
+# Production build
+build/
+
+# Dependency directories
+bin/
+lib/
+include/
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Icon?
+ehthumbs.db
+Thumbs.db
+
+# IDE/Editor specific files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Compiled binary addons
+*.node
+
+# Dependency directories
+# Optional: if you're using Yarn
+yarn.lock
+.pnp/
+.pnp.js
+
+# Optional: if you're using npm
+package-lock.json
