@@ -1,45 +1,43 @@
-/* DetailsPage.css */
-* {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
-.detailsPage {
-    margin-top: 20px;
-    
-    
-}
-.wrapper {
-    
-    max-width: 600px;
-    
-    margin: 5% auto ;
-    padding: 20px;
+.DetailsPage {
+    font-family: Arial, sans-serif;
+  }
+  /*form*/
+  .wrapper {
+    max-width: 500px;
+    margin: 3% auto;
+    padding: 30px;
     border: 1px solid #ccc;
-    border-radius: 5px;
+    border-radius: 5%;
   }
-  
+  /*title*/
   h1 {
-    font-size: 24px;
-    margin-bottom: 20px;
+    text-align: center;
+    margin-bottom: 30px;
   }
-  
-  input[type='text'],
-  input[type='date'],
-  input[type='time'],
+  /*inputs*/
+  input[type="text"],
+  select,
+  input[type="date"],
+  input[type="time"],
   button {
     display: block;
     width: 100%;
+    margin-bottom: 15px;
     padding: 10px;
-    margin-bottom: 10px;
-    font-size: 16px;
     border: 1px solid #ccc;
     border-radius: 5px;
+    font-size: 16px;
   }
-  
+  /*select*/
+  select {
+    appearance: none;
+    background: url('data:image/svg+xml;utf8,<svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>') no-repeat right 10px center/15px;
+  }
+  /*buttons*/
   button {
     background-color: #007bff;
     color: #fff;
+    font-weight: bold;
     cursor: pointer;
   }
   
@@ -47,3 +45,19 @@
     background-color: #0056b3;
   }
   
+  .btn {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
+  }
+  
+  .btn:hover {
+    background-color: #0056b3;
+  }
