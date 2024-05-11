@@ -1,95 +1,130 @@
-.customerReviewsContainer{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-  
-    border: 10px;
-    padding: 20px;
-    box-shadow:0 4px 8px rgba(0, 0, 0, 0.1);
-  
-    margin-left: 20px;
-    margin-right: 20px;
-    margin-bottom: 20px;
-    border-radius: 10px;
-  }
-  
-  .customerCard {
-    width: calc(22% - 14px); /* Adjust the width of each card and the margin as needed */
-    margin-bottom: 20px;
-    background-color: #fff;
-    border-radius: 40px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 50px;
-    text-align: center;
-  }
-  
-  .cardImage {
-    width: 100px; /* Adjust the image size as needed */
-    height: 100px; /* Adjust the image size as needed */
-    border-radius: 50%; /* Make the image circular */
-    margin: 0 auto 20px; /* Center the image */
-  }
-  
-  h2 {
-    font-size: 1.2rem;
-    margin-bottom: 10px;
-  }
-  
-  p {
-    font-size: 1rem;
-    color: #555;
-  }
-  
-  /* Responsive styles */
-  @media screen and (max-width: 1024px) {
-    .customerCard {
-      width: calc(33.33% - 20px); /* Adjust the width of each card and the margin as needed */
-    }
-  }
-  
-  @media screen and (max-width: 768px) {
-    .customerCard {
-        display: flex;
-        width: 100%;
-        max-width: 768px; /* Maximum width for the card */
-        background-color: #ffffff;
-        border-radius: 10px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        margin-bottom: 20px;
+.customerReviewsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  border: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+}
 
-    }
-    .cardImage {
-        width: 150px; /* Adjust image width as needed */
-        height: auto; /* Maintain aspect ratio */
-        border-top-left-radius: 10px;
-        border-bottom-left-radius: 10px;
-        object-fit: cover;
-       
-      
-      
-       
-        
-    }
-    
-.card-content {
+.customerCard {
+  width: calc(22% - 14px);
+  margin-bottom: 20px;
+  background-color: #fff;
+  border-radius: 40px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 50px;
+  text-align: center;
+}
+
+.cardImage {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin: 0 auto 20px;
+}
+
+.star-rating {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.star-rating span {
+  color: #ffd700; /* Yellow color for stars */
+  font-size: 24px; /* Adjust star size as needed */
+  margin: 0 2px; /* Adjust spacing between stars */
+}
+
+h2 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+p {
+  font-size: 1rem;
+  color: #555;
+}
+
+/* Responsive styles */
+@media screen and (max-width: 1024px) {
+  .customerCard {
+    width: calc(33.33% - 20px);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .customerCard {
+    display: flex;
+    width: 100%;
+    max-width: 768px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+  }
+
+  .cardImage {
+    width: 150px;
+    height: auto;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    object-fit: cover;
+  }
+
+  .card-content {
     flex: 1;
     padding: 20px;
   }
-  
+
   h2 {
     font-size: 1.2rem;
     margin-bottom: 10px;
   }
-  
+
   p {
     font-size: 1rem;
     color: #555;
   }
-  }
-  
-  @media screen and (max-width: 480px) {
+}
+
+@media screen and (max-width: 480px) {
+  .customerCard {
     .customerCard {
-      width: calc(100% - 20px); /* Adjust the width of each card and the margin as needed */
+      display: flex;
+      width: 100%;
+      max-width: 768px;
+      background-color: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      margin-bottom: 20px;
+    }
+  
+    .cardImage {
+      width: 150px;
+      height: auto;
+      border-top-left-radius: 10px;
+      border-bottom-left-radius: 10px;
+      object-fit: cover;
+    }
+  
+    .card-content {
+      flex: 1;
+      padding: 20px;
+    }
+  
+    h2 {
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+    }
+  
+    p {
+      font-size: 1rem;
+      color: #555;
     }
   }
-  
+}

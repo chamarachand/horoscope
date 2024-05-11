@@ -8,7 +8,7 @@ function App() {
   return (
     <div>
       <NavBar/>
-    <CustomerReviews/>
+   <CustomerReviews/>
 
    
     </div>
