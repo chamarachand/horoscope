@@ -54,6 +54,7 @@ const CustomerReviewsContainer = () => {
 
   return (
     <div className="customerReviewsContainer">
+      <h1 className="reviews-title">Customer Reviews</h1>
       {customers.map((customer, index) => (
         <CustomerCard
           key={index}
