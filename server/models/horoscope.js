@@ -8,6 +8,7 @@ const horoscopeSchema = new mongoose.Schema({
   birthDay: { type: String, minlength: 10, maxlength: 10, required: true },
   birthTime: { type: String, maxlength: 6, required: true },
   birthDistrict: { type: String, maxlength: 25, required: true },
+  submitDate: { type: Date, default: Date.now() },
 });
 
 const Horoscope = mongoose.model("Horoscope", horoscopeSchema);
