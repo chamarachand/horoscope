@@ -8,7 +8,7 @@ const horoscopeSchema = new mongoose.Schema({
   birthDay: { type: String, minlength: 10, maxlength: 10, required: true },
   birthTime: { type: String, maxlength: 6, required: true },
   birthDistrict: { type: String, maxlength: 25, required: true },
-  submitDate: { type: Date, default: Date.now() },
+  submitDate: { type: Date, default: Date.now },
 });
 
 const Horoscope = mongoose.model("Horoscope", horoscopeSchema);
@@ -17,7 +17,7 @@ function validateHoroscope(horoscope) {
   const schema = Joi.object({
     name: Joi.string().min(5).max(255).required(),
     sign: Joi.string().min(3).max(11).required(),
-    gender: Joi.string().valid(["male, female"]),
+    gender: Joi.string().valid("male", "female"),
     birthDay: Joi.string().length(10),
     birthTime: Joi.string().max(6).required(),
     birthDistrict: Joi.string().min(3).max(25).required(),

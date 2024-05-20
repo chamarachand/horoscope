@@ -2,12 +2,15 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 const connection = require("./database");
+const horoscopeRoutes = require("./routes/horoscopeRoutes");
 
 // connection
 connection();
 
 // Middleware
-app.use(cors);
+app.use(express.json());
+app.use("/horoscope", horoscopeRoutes);
+// app.use(cors);
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => console.log(`Listening to port ${port}..`));

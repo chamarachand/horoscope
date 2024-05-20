@@ -3,6 +3,8 @@ const router = express.Router();
 const { Horoscope, validate } = require("../models/horoscope");
 
 router.post("/", async (req, res) => {
+  if (!req.body) return res.status(400).send("No body");
+
   const { error } = validate(req.body);
   if (error) return res.status(400).send({ error: error.details[0].message });
 
