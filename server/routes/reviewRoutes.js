@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { Horoscope, validate } = require("../models/horoscope");
+const { Review, validate } = require("../models/review");
 
 router.post("/", async (req, res) => {
   if (!req.body) return res.status(400).send({ error: "Body not provided" });
@@ -9,12 +9,12 @@ router.post("/", async (req, res) => {
   if (error) return res.status(400).send({ error: error.details[0].message });
 
   try {
-    const horoscope = new Horoscope(req.body);
-    await horoscope.save();
-    res.status(201).send(horoscope);
+    const review = new Review(req.body);
+    await review.save();
+    res.status(201).send(review);
   } catch (error) {
     console.error(error);
-    res.status(500).send({ error: "Internal server error" });
+    res.status(500).send("Internal server error");
   }
 });
 
