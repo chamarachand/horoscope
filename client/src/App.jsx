@@ -8,8 +8,11 @@ import AboutUs from "./Pages/AboutUs";
 function App() {
   return (
     <div>
-      <NavBar />
+     
+      <HomePage />
+      <DetailsPage />
       <CustomerReviews />
+      <AboutUs />
     </div>
   );
 }
