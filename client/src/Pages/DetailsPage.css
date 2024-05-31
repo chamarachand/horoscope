@@ -12,11 +12,14 @@
     border: 1px solid #ccc;
     border-radius: 5%;
   }
+
   /*title*/
   h1 {
     text-align: center;
-    margin-bottom: 30px;
+    margin-bottom: 15px;
+    /* margin-bottom: 30px; */
   }
+
   /*inputs*/
   input[type="text"],
   select,
@@ -31,11 +34,13 @@
     border-radius: 5px;
     font-size: 16px;
   }
+
   /*select*/
   select {
     appearance: none;
     background: url('data:image/svg+xml;utf8,<svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>') no-repeat right 10px center/15px;
   }
+
   /*buttons*/
   button {
     background-color: #007bff;
@@ -63,4 +68,11 @@
   
   .btn:hover {
     background-color: #0056b3;
+  }
+
+  .error-message {
+    color: red;
+    text-align: center;
+    font-size: 12px;
+    margin-bottom: 5px;
   }
