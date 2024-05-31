@@ -1,68 +1,84 @@
-import React from 'react'
-import { useState } from 'react'
-import './DetailsPage.css'
+import React from "react";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { districts, signs } from "../data/data";
+import "./DetailsPage.css";
 
 function DetailsPage() {
-  //Districts
-  const[birthDistrict,setBirthDistrict]=useState("")
-  const districts=[
-    "Select Your Birth District",
-    "District 1",
-    "District 2",
-    "District 3",
-  ]
-  const handleDistrictChange = (event) => {
-    setBirthDistrict(event.target.value);
-};
-//sings
- const [yourSing,setYourSing]=useState("");
- const sings=["Select Your Sign","Aries","Taurus","Gemini","Cancer","Leo","Virgo","Libra","Scorpio","Sagittarius","Capricorn","Aquarius","Pisces"];
- const handleSing = (event) => {
-    setYourSing(event.target.value);
-   
- }
- //gender
- const [yourGender,setYourGender]=useState("");
-const gender=["Select Your Gender","Male","Female"];
-const handleGender = (event) => {
-  setYourGender(event.target.value);
-  
-}
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  const onSubmit = (data) => {
+    console.log(data);
+  };
 
   return (
-    <div className='DetailsPage'>
-      <div className='wrapper'>
+    <div className="DetailsPage">
+      <div className="wrapper">
         <h1>Get Your Horoscope Report</h1>
-        <div>
-          <input type='text' placeholder='Enter Your Name'></input>
 
-          <select value={yourSing} onChange={handleSing}>
-            {sings.map((sing, index) => (
-              <option key={index} value={sing}>{sing}</option>
+        {Object.keys(errors).length > 0 && (
+          <p className="error-message">Please fill out all required fields.</p>
+        )}
+
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <input
+            {...register("name", { required: true })}
+            type="text"
+            placeholder="Enter your name"
+          />
+
+          <select {...register("sign", { required: true })}>
+            <option value="" disabled>
+              Select Your Sign
+            </option>
+            {signs.map((sign, index) => (
+              <option key={index} value={sign}>
+                {sign}
+              </option>
             ))}
-
           </select>
-        <select value={yourGender} onChange={handleGender}>
-          {gender.map((gender, index) => (
-            <option key={index} value={gender}>{gender}</option>
+
+          <select {...register("gender", { required: true })}>
+            <option value="" disabled>
+              Select Your Gender
+            </option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+          </select>
+
+          <select {...register("birthDistrict", { required: true })}>
+            <option value="" disabled>
+              Select Your Birth District
+            </option>
+            {districts.map((district, index) => (
+              <option key={index} value={district}>
+                {district}
+              </option>
             ))}
           </select>
-         
-          <select value={birthDistrict} onChange={handleDistrictChange}>
-              {districts.map((district, index) => (
-                <option key={index} value={district}>{district}</option>
-                          ))}
-                    </select>
 
-          <input type='date' placeholder='Enter Your Birth Date'/>
-          <input type='time' placeholder='Enter Your Birth Time'/>
-          <button className='btn'>Get Report</button>
+          <input
+            {...register("birthDate", { required: true })}
+            type="date"
+            placeholder="Enter Your Birth Date"
+          />
+          <input
+            {...register("birthTime", { required: true })}
+            type="time"
+            placeholder="Enter Your Birth Time"
+          />
 
-        </div>
+          <button type="submit" className="btn">
+            Submit
+          </button>
+        </form>
       </div>
-     
     </div>
-  )
+  );
 }
 
-export default DetailsPage
+export default DetailsPage;
