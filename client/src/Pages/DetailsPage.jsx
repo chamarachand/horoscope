@@ -1,6 +1,6 @@
 import React from "react";
-import { useState } from "react";
 import { useForm } from "react-hook-form";
+import Axios from "axios";
 import { districts, signs } from "../data/data";
 import "./DetailsPage.css";
 
@@ -12,7 +12,13 @@ function DetailsPage() {
   } = useForm();
 
   const onSubmit = (data) => {
-    console.log(data);
+    Axios.post("http://localhost:3000/horoscope/", data)
+      .then((response) => {
+        console.log("Data sent successfully");
+      })
+      .catch((error) => {
+        console.log("Error sending data", error);
+      });
   };
 
   return (
