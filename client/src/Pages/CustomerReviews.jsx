@@ -1,5 +1,7 @@
-import React from 'react';
-import './CustomerReviews.css';
+import React from "react";
+import { useQuery } from "@tanstack/react-query";
+import Axios from "axios";
+import "./CustomerReviews.css";
 
 const CustomerCard = ({ name, image, rating, review }) => {
   // Function to generate star icons based on rating
@@ -24,44 +26,28 @@ const CustomerCard = ({ name, image, rating, review }) => {
 };
 
 const CustomerReviewsContainer = () => {
-  // Example customer data
-  const customers = [
-    {
-      name: "Customer 1",
-      image: "RashiChakraya.png",
-      rating: 5,
-      review: "Amazing service! Highly recommend."
+  const { data, isLoading, isError, refetch } = useQuery({
+    queryKey: ["Review"],
+    queryFn: () => {
+      return Axios.get("http://localhost:3000/reviews/4").then(
+        (res) => res.data
+      );
     },
-    {
-      name: "Customer 2",
-      image: "RashiChakraya.png",
-      rating: 4,
-      review: "Great experience overall."
-    },
-    {
-      name: "Customer 3",
-      image: "RashiChakraya.png",
-      rating: 3,
-      review: "Good service, but room for improvement."
-    },
-    {
-      name: "Customer 4",
-      image: "RashiChakraya.png",
-      rating: 3,
-      review: "Good service, but room for improvement."
-    }
-  ];
+  });
+
+  if (isLoading) return <div>Loading...</div>;
+  if (isError) return <div>Error Loading Reviews</div>;
 
   return (
     <div className="customerReviewsContainer">
       <h1 className="reviews-title">Customer Reviews</h1>
-      {customers.map((customer, index) => (
+      {data.map((review, index) => (
         <CustomerCard
           key={index}
-          name={customer.name}
-          image={customer.image}
-          rating={customer.rating}
-          review={customer.review}
+          name={review.name}
+          image="RashiChakraya.png"
+          rating={review.rating}
+          review={review.comment}
         />
       ))}
     </div>
