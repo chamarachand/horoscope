@@ -12,7 +12,7 @@ connection();
 app.use(express.json());
 app.use(cors());
 app.use("/horoscope", horoscopeRoutes);
-app.use("/review", reviewRoutes);
+app.use("/reviews", reviewRoutes);
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => console.log(`Listening to port ${port}..`));
