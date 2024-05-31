@@ -29,7 +29,9 @@ const CustomerReviewsContainer = () => {
   const { data, isLoading, isError, refetch } = useQuery({
     queryKey: ["Review"],
     queryFn: () => {
-      return Axios.get("http/localhost:3000/reviews").then((res) => res.data);
+      return Axios.get("http://localhost:3000/reviews/4").then(
+        (res) => res.data
+      );
     },
   });
 
@@ -39,13 +41,13 @@ const CustomerReviewsContainer = () => {
   return (
     <div className="customerReviewsContainer">
       <h1 className="reviews-title">Customer Reviews</h1>
-      {data.map((customer, index) => (
+      {data.map((review, index) => (
         <CustomerCard
           key={index}
-          name={customer.name}
-          image={customer.image}
-          rating={customer.rating}
-          review={customer.review}
+          name={review.name}
+          image="RashiChakraya.png"
+          rating={review.rating}
+          review={review.comment}
         />
       ))}
     </div>
