@@ -12,7 +12,9 @@ function App() {
   return (
     <QueryClientProvider client={client}>
       <div>
-       <HomePage/>
+        <HomePage />
+        <DetailsPage />
+        <CustomerReviews />
         <AboutUs />
       </div>
     </QueryClientProvider>
