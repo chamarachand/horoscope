@@ -41,32 +41,3 @@
     color: white;
 }
     
-@keyframes text-move {
-    from {
-        transform: translateX(-2000px);
-    }
-    to{
-        transform: translateX(0px);
-    }
-}
-.container-home h1{
-    animation-name:text-move;
-    animation-duration: 5s;
-    animation-fill-mode: forwards;
-   
-    
-}
-@keyframes paragraph-move {
-    from {
-        transform: translateX(2000px);
-    }
-    to{
-        transform: translateX(0px);
-    }
-}
-.content-home p{
-    animation-name:paragraph-move;
-    animation-duration: 5s;
-    animation-fill-mode: forwards;
-    
-}
