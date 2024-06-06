@@ -22,7 +22,7 @@ function DetailsPage() {
   };
 
   return (
-    <div className="DetailsPage">
+    <div className="detailsPage">
       <div className="wrapper">
         <h1>Get Your Horoscope Report</h1>
 
