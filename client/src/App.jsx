@@ -13,7 +13,6 @@ function App() {
     <QueryClientProvider client={client}>
       <div>
         <HomePage />
-       
       </div>
     </QueryClientProvider>
   );
