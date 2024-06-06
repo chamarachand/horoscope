@@ -13,6 +13,9 @@ function App() {
     <QueryClientProvider client={client}>
       <div>
         <HomePage />
+        <DetailsPage />
+        <CustomerReviews />
+        <AboutUs />
       </div>
     </QueryClientProvider>
   );

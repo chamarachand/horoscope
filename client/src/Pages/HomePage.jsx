@@ -6,14 +6,16 @@ function HomePage() {
     <div id="wrapper">
       <div className="container-home">
         <h1>Welcome To The Nakatha Horoscope</h1>
-         </div>
-         <div className="content-home">
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-             Laudantium, facilis! Laboriosam commodi dolorem iure quidem! Nisi saepe quibusdam,
-              distinctio rem voluptate libero quisquam sequi possimus labore. 
-              Nesciunt totam architecto minus!</p>
-         </div>
-    
+      </div>
+      <div className="content-home">
+        <p>
+          Welcome to Astro Visionary! Publish your horoscope details and have
+          them reviewed by experienced astrologists. Join our community, share
+          celestial insights, and receive guidance on love, career, and personal
+          growth. Embark on a transformative journey as the stars illuminate
+          your path. Welcome to your celestial haven!
+        </p>
+      </div>
     </div>
   );
 }
