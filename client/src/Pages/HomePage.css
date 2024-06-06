@@ -32,12 +32,45 @@
 } */
 .content-home{
     display: flex;
+    margin-left: 30vh;
+    margin-right: 30vh;
     justify-content: center;
     align-items: center;
-    height: 20vh;
+    height: 50vh;
+    background-color: #ffffff;
+    opacity: 0.6;
 }
 .content-home p{
     font-size: 20px;
-    color: white;
+    font-weight: bold;
+
+    color:black;
+    margin-left: 30vh;
+    margin-right: 30vh;
 }
+@media screen and (max-width: 900px) {
+    .container-home h1{
+        font-size: 30px;
+    }
+    .content-home p{
+        font-size: 15px;
+        margin-top: 5vh;
+        margin-left: 5vh;
+        margin-right: 5vh;
+    }
+} 
     
+@media screen and (max-width: 768px) {
+    .container-home h1{
+        font-size: 30px;
+    }
+    .content-home p{
+        font-size: 15px;
+        margin-top: 15vh;
+        margin-left: 5vh;
+        margin-right: 5vh;
+       
+    }
+
+    
+}
