@@ -4,6 +4,7 @@ import DetailsPage from "./Pages/DetailsPage";
 import HomePage from "./Pages/HomePage";
 import CustomerReviews from "./Pages/CustomerReviews";
 import AboutUs from "./Pages/AboutUs";
+import { ContactDetails } from "./Pages/ContactDetails";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 function App() {
@@ -12,10 +13,11 @@ function App() {
   return (
     <QueryClientProvider client={client}>
       <div>
-        <HomePage />
+        <ContactDetails />
+        {/* <HomePage />
         <DetailsPage />
         <CustomerReviews />
-        <AboutUs />
+        <AboutUs /> */}
       </div>
     </QueryClientProvider>
   );

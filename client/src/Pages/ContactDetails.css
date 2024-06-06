@@ -1,0 +1,62 @@
+body {
+    background-image: url("../assets/horoscope_background_upscayl_3x_realesrgan-x4plus.jpg");
+    background-size: cover;
+    background-position: center;
+}
+
+label, input {
+    display: block;
+}
+
+input {
+    height: 2.5rem;
+    width: 30rem;
+    padding: 2px 8px;
+    border-radius: 5px; /* or any desired value */
+    border: 1px solid black;
+    outline: none;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    opacity: 0.90;
+}
+
+.content {
+    background-color: cadetblue;
+    color: #F7F7F7;
+    padding: 2rem;
+    border-radius: 10px;
+}
+
+.content h1 {
+    font-size: 2rem;
+    color: #0f0f0f;
+}
+
+
+.user-input {
+    margin-bottom: 1rem;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-between; 
+
+}
+
+.buttons button {
+    background-color: #007bff;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    margin: 0.8rem 1.5rem;
+
+}
+
+button:hover {
+    border: none;
+  }
