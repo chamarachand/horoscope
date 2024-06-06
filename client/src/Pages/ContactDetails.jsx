@@ -14,7 +14,16 @@ export const ContactDetails = () => {
   };
 
   return (
-    <div className="container">
+    <div
+      className="container"
+      style={{
+        backgroundImage: url(
+          "../assets/horoscope_background_upscayl_3x_realesrgan-x4plus.jpg"
+        ),
+        backgroundSize: cover,
+        backgroundPosition: center,
+      }}
+    >
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="content">
           <h1>Enter your contact details</h1>
