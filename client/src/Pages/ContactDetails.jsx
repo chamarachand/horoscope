@@ -1,7 +1,11 @@
 import { useForm } from "react-hook-form";
+import { useContext } from "react";
+import { AppContext } from "../App";
 import "./ContactDetails.css";
 
 export const ContactDetails = () => {
+  const { setShowContactDetailsPage } = useContext(AppContext);
+
   const {
     register,
     handleSubmit,
@@ -16,13 +20,13 @@ export const ContactDetails = () => {
   return (
     <div
       className="container"
-      style={{
-        backgroundImage: url(
-          "../assets/horoscope_background_upscayl_3x_realesrgan-x4plus.jpg"
-        ),
-        backgroundSize: cover,
-        backgroundPosition: center,
-      }}
+      // style={{
+      //   backgroundImage: url(
+      //     "../assets/horoscope_background_upscayl_3x_realesrgan-x4plus.jpg"
+      //   ),
+      //   backgroundSize: cover,
+      //   backgroundPosition: center,
+      // }}
     >
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="content">
@@ -68,7 +72,12 @@ export const ContactDetails = () => {
           </div>
 
           <div className="buttons">
-            <button type="button">Back</button>
+            <button
+              type="button"
+              onClick={() => setShowContactDetailsPage(false)}
+            >
+              Back
+            </button>
             <button type="submit">Continue</button>
           </div>
         </div>
