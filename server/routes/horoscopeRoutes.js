@@ -11,7 +11,7 @@ router.post("/", async (req, res) => {
   try {
     const horoscope = new Horoscope(req.body);
     await horoscope.save();
-    res.status(201).send(horoscope);
+    res.status(201).send({ message: "Horoscope details saved successfully" });
   } catch (error) {
     console.error(error);
     res.status(500).send({ error: "Internal server error" });
