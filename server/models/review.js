@@ -15,6 +15,7 @@ function validateReview(review) {
     name: Joi.string(),
     rating: Joi.number().min(1).max(5).required(),
     comment: Joi.string().min(3).max(255),
+    accepted: Joi.boolean(),
   });
   return schema.validate(review);
 }

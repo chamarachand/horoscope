@@ -31,7 +31,7 @@ router.post("/", async (req, res) => {
   try {
     const review = new Review(req.body);
     await review.save();
-    res.status(201).send(review);
+    res.status(201).send({ message: "Review saved successfully" });
   } catch (error) {
     console.error(error);
     res.status(500).send("Internal server error");
