@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import Axios from "axios";
 import "./CustomerReviews.css";
+import { AddReview } from "./AddReview";
 
 const CustomerCard = ({ name, image, rating, review }) => {
   // Function to generate star icons based on rating
@@ -38,6 +39,10 @@ const CustomerReviewsContainer = () => {
   if (isLoading) return <div>Loading...</div>;
   if (isError) return <div>Error Loading Reviews</div>;
 
+  const [showAddReview, setShowAddReview] = useState(false);
+
+  const toggleAddReview = () => setShowAddReview(!showAddReview);
+
   return (
     <div className="reviewContainer">
       <div className="customerReviews">
@@ -53,8 +58,9 @@ const CustomerReviewsContainer = () => {
         ))}
       </div>
       <div className="add-review-btn-container">
-        <button>Add Your Review</button>
+        <button onClick={toggleAddReview}>Add Your Review</button>
       </div>
+      {showAddReview && <AddReview toggleAddReview={toggleAddReview} />}
     </div>
   );
 };
