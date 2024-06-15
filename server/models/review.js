@@ -5,6 +5,7 @@ const reviewSchema = new mongoose.Schema({
   name: { type: String, minlength: 5, maxlength: 25 },
   rating: { type: Number, required: true, min: 1, max: 5 },
   comment: { type: String, minlength: 3, maxlength: 255 },
+  accepted: { type: Boolean, default: false },
 });
 
 const Review = mongoose.model("Review", reviewSchema);
