@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const { Review, validate } = require("../models/review");
+const { default: mongoose } = require("mongoose");
 
 // Get accepted reviews
 router.get("/count/:count", async (req, res) => {
@@ -44,6 +45,27 @@ router.post("/", async (req, res) => {
     const review = new Review(req.body);
     await review.save();
     res.status(201).send({ message: "Review saved successfully" });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Internal server error");
+  }
+});
+
+// Delete a review
+router.delete("/id/:id", async (req, res) => {
+  const { id } = req.params;
+
+  if (!mongoose.Types.ObjectId.isValid(id))
+    return res.status(400).send({ error: "Invalid review id" });
+
+  try {
+    const review = await Review.findByIdAndDelete(id);
+
+    if (!review)
+      return res
+        .status(400)
+        .send({ error: "Review with the given id not found" });
+    res.status(200).send({ message: "Review deleted successfully" });
   } catch (error) {
     console.error(error);
     res.status(500).send("Internal server error");
