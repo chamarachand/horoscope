@@ -2,11 +2,11 @@ const express = require("express");
 const router = express.Router();
 const { Review, validate } = require("../models/review");
 
-router.get("/:count", async (req, res) => {
-  const { count } = req.params;
-  if (!count) return res.status(400).send({ error: "No count provided" });
-
+// Get accepted reviews
+router.get("/count/:count", async (req, res) => {
   const MAX_COUNT = 100;
+  const { count } = req.params;
+
   if (isNaN(count) || count < 0 || count > MAX_COUNT)
     return res.status(400).send({ error: "Invalid count" });
 
@@ -22,6 +22,18 @@ router.get("/:count", async (req, res) => {
   }
 });
 
+// Get pending reviews (not accepted)
+router.get("/pending", async (req, res) => {
+  try {
+    const reviews = await Review.find({ accepted: false });
+    return res.status(200).send(reviews);
+  } catch (error) {
+    console.log(error);
+    return res.status(500).send({ error: "Internal server error" });
+  }
+});
+
+// Create a review
 router.post("/", async (req, res) => {
   if (!req.body) return res.status(400).send({ error: "Body not provided" });
 

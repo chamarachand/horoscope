@@ -32,7 +32,7 @@ const CustomerReviewsContainer = () => {
   const { data, isLoading, isError, refetch } = useQuery({
     queryKey: ["Review"],
     queryFn: () => {
-      return Axios.get("http://localhost:3000/reviews/4").then(
+      return Axios.get("http://localhost:3000/reviews/count/4").then(
         (res) => res.data
       );
     },
