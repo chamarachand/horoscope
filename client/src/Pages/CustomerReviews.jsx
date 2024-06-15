@@ -27,6 +27,8 @@ const CustomerCard = ({ name, image, rating, review }) => {
 };
 
 const CustomerReviewsContainer = () => {
+  const [showAddReview, setShowAddReview] = useState(false);
+
   const { data, isLoading, isError, refetch } = useQuery({
     queryKey: ["Review"],
     queryFn: () => {
@@ -38,8 +40,6 @@ const CustomerReviewsContainer = () => {
 
   if (isLoading) return <div>Loading...</div>;
   if (isError) return <div>Error Loading Reviews</div>;
-
-  const [showAddReview, setShowAddReview] = useState(false);
 
   const toggleAddReview = () => setShowAddReview(!showAddReview);
 
