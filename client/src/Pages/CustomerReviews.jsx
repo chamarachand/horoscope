@@ -39,17 +39,22 @@ const CustomerReviewsContainer = () => {
   if (isError) return <div>Error Loading Reviews</div>;
 
   return (
-    <div className="customerReviewsContainer">
-      <h1 className="reviews-title">Customer Reviews</h1>
-      {data.map((review, index) => (
-        <CustomerCard
-          key={index}
-          name={review.name}
-          image="RashiChakraya.png"
-          rating={review.rating}
-          review={review.comment}
-        />
-      ))}
+    <div className="reviewContainer">
+      <div className="customerReviews">
+        <h1 className="reviews-title">Customer Reviews</h1>
+        {data.map((review, index) => (
+          <CustomerCard
+            key={index}
+            name={review.name}
+            image="RashiChakraya.png"
+            rating={review.rating}
+            review={review.comment}
+          />
+        ))}
+      </div>
+      <div className="add-review-btn-container">
+        <button>Add Your Review</button>
+      </div>
     </div>
   );
 };
