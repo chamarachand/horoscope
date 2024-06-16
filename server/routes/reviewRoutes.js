@@ -51,6 +51,28 @@ router.post("/", async (req, res) => {
   }
 });
 
+// Accept review
+router.patch("accept/id/:id", async (req, res) => {
+  const { id } = req.params;
+
+  if (!mongoose.Types.ObjectId.isValid(id))
+    return res.status(400).send({ error: "Invalid review id" });
+
+  try {
+    const review = await Review.findByIdAndUpdate(id, { accepted: true });
+
+    if (!review)
+      return res
+        .status(400)
+        .send({ error: "Review with the given id not found" });
+
+    res.status(200).send({ message: "Review accepted successfully" });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Internal server error");
+  }
+});
+
 // Delete a review
 router.delete("/id/:id", async (req, res) => {
   const { id } = req.params;
