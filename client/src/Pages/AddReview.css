@@ -27,3 +27,14 @@
     font-size: x-large;
     font-weight: 900;
 }
+
+.rating-content {
+    display: flex;
+
+}
+
+textarea {
+    padding: 5px;  
+    height: 10rem;
+    width: 100%;
+}
