@@ -2,6 +2,7 @@ import React from "react";
 import "./HomePage.css";
 
 function HomePage() {
+  
   return (
     <div id="wrapper">
       <div className="container-home">

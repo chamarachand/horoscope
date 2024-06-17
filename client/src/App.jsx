@@ -5,6 +5,7 @@ import HomePage from "./Pages/HomePage";
 import CustomerReviews from "./Pages/CustomerReviews";
 import AboutUs from "./Pages/AboutUs";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import Footer from "./components/Footer";
 
 function App() {
   const client = new QueryClient();
@@ -12,7 +13,7 @@ function App() {
   return (
     <QueryClientProvider client={client}>
       <div>
-        <HomePage />
+        <Footer/>
        
       </div>
     </QueryClientProvider>

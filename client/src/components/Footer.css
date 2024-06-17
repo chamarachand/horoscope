@@ -1,0 +1,70 @@
+.footer{
+    width:100%;
+    display: grid;
+    grid-template-columns: repeat(1fr,1fr);
+    grid-template-rows: repeat(1fr,1fr);
+    grid-template-areas: "questions socialMedia contactInformation";
+    grid-gap: 2px;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    grid-template-areas: "questions socialMedia"
+    "contactInformation contactInformation";
+    
+}
+.questions h2, .socialMedia h2, .contactInformation h2{
+    margin: 10px;
+    padding: 10px;
+    text-align: center;
+    color: white;
+    scale: 1.5;
+}
+
+.questions{
+    grid-area: questions;
+    background-color: #cc0000;
+}
+.socialMedia{
+    grid-area: socialMedia;
+    background-color: aqua;
+    height: auto;
+}
+.contactInformation{
+    grid-area: contactInformation;
+    background-color:green;
+}
+.socialMedia .icons{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 5px;
+    cursor: pointer;
+    margin: 20px;
+    align-items: center;
+}
+.icons .icon-facebook{
+   justify-self: center;
+   scale: 2;
+   
+}
+.icons .icon-twitter{
+    justify-self: center;
+    scale: 2;
+}
+.icons .icon-instagram{
+    justify-self: center;
+    scale: 2;
+}
+.icons .icon-twitter:hover{
+    color: yellow;
+}
+.icons .icon-facebook:hover{
+    color: yellow;
+}
+.icons .icon-instagram:hover{
+    color:yellow;
+}
+@media screen and (max-width: 768px) {
+   .footer{grid-template-areas: "questions"
+   "socialMedia"
+   "contactInformation";
+   }} 
