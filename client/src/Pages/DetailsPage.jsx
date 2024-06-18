@@ -1,10 +1,14 @@
 import React from "react";
+import { useContext } from "react";
+import { AppContext } from "../App";
 import { useForm } from "react-hook-form";
 import Axios from "axios";
 import { districts, signs } from "../data/data";
 import "./DetailsPage.css";
 
 function DetailsPage() {
+  const { setShowContactDetailsPage } = useContext(AppContext);
+
   const {
     register,
     handleSubmit,
@@ -12,17 +16,20 @@ function DetailsPage() {
   } = useForm();
 
   const onSubmit = (data) => {
-    Axios.post("http://localhost:3000/horoscope/", data)
-      .then((response) => {
-        console.log("Data sent successfully");
-      })
-      .catch((error) => {
-        console.log("Error sending data", error);
-      });
+    console.log(data);
+    // Axios.post("http://localhost:3000/horoscope/", data)
+    //   .then((response) => {
+    //     console.log("Data sent successfully");
+    //   })
+    //   .catch((error) => {
+    //     console.log("Error sending data", error);
+    //   });
+
+    setShowContactDetailsPage(true);
   };
 
   return (
-    <div className="DetailsPage">
+    <div className="detailsPage">
       <div className="wrapper">
         <h1>Get Your Horoscope Report</h1>
 
