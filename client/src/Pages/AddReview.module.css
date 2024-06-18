@@ -1,4 +1,4 @@
-.add-review-container {
+.addReviewContainer {
     position: fixed;
     top: 0;
     left: 0;
@@ -10,7 +10,7 @@
     align-items: center;
 }
 
-.add-review-content {
+.addReviewContent {
     background-color: #fff;
     padding: 20px;
     border-radius: 5px;
@@ -28,13 +28,40 @@
     font-weight: 900;
 }
 
-.rating-content {
+.ratingContent {
     display: flex;
 
 }
 
-textarea {
+.textarea {
     padding: 5px;  
     height: 10rem;
     width: 100%;
+}
+
+.btnContainer {
+    display: flex;
+    justify-content: space-between; 
+    margin-top: 1rem;
+
+}
+
+/*buttons*/  
+.btn {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    text-align: center;
+    margin-right: 10px;
+  }
+    
+.btn:hover {
+    background-color: #0056b3;
 }
