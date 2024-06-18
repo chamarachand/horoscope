@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import Axios from "axios";
 import { AddReview } from "./AddReview";
-import styles from "./CustomerReviews.module.css";
+import styles from "../styles/CustomerReviews.module.css";
 
 const CustomerCard = ({ name, image, rating, review }) => {
   // Function to generate star icons based on rating

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { FaStar } from "react-icons/fa";
-import styles from "./AddReview.module.css";
+import styles from "../styles/AddReview.module.css";
 
 export const AddReview = ({ toggleAddReview }) => {
   const [rating, setRating] = useState(0);

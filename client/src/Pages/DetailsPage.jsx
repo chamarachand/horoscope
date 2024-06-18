@@ -3,7 +3,7 @@ import { useContext } from "react";
 import { AppContext } from "../App";
 import { useForm } from "react-hook-form";
 import { districts, signs } from "../data/data";
-import styles from "./DetailsPage.module.css";
+import styles from "../styles/DetailsPage.module.css";
 
 function DetailsPage() {
   const { setShowContactDetailsPage } = useContext(AppContext);

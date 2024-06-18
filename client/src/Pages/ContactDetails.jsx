@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import { useContext } from "react";
 import { AppContext } from "../App";
-import styles from "./ContactDetails.module.css";
+import styles from "../styles/ContactDetails.module.css";
 
 export const ContactDetails = () => {
   const { setShowContactDetailsPage } = useContext(AppContext);
