@@ -13,10 +13,10 @@ export const AdminLogin = () => {
           />
         </div>
         <div className={styles.loginContainer}>
-          <form action="">
+          <form action="" className={styles.form}>
             <div className={styles.welcomeText}>
-              <h2>Welcome Back!</h2>
-              <h2>Login to your Account</h2>
+              <h2>Welcome Admin!</h2>
+              <p>Login to your Account</p>
             </div>
 
             <div className={styles.field}>
@@ -30,7 +30,7 @@ export const AdminLogin = () => {
               <input type="password" id="password" placeholder="Password" />
               <p className={styles.error}>{}</p>
             </div>
-            <button className={styles.loginBtn}>Login</button>
+            <button className={styles.btn}>Login</button>
           </form>
         </div>
       </div>
