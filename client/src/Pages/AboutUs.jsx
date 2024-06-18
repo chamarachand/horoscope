@@ -1,14 +1,14 @@
 import React from "react";
-import "./AboutUs.css";
+import styles from "./AboutUs.module.css";
 
 const AboutUs = () => {
   return (
-    <div className="container-about">
-      <div className="title-about">
+    <div className={styles.containerAbout}>
+      <div className={styles.titleAbout}>
         <h1>About Us</h1>
       </div>
-      <div className="content-about">
-        <div className="article-about">
+      <div className={styles.contentAbout}>
+        <div className={styles.articleAbout}>
           <h2>About Astro Visionary</h2>
           <p>
             At Astro Visionary, we're passionate about the celestial journey of
@@ -20,12 +20,8 @@ const AboutUs = () => {
           </p>
           <a href="/#">Read More</a>
         </div>
-        <div className="image-section-about">
-          <img
-            src="RashiChakraya.png"
-            alt="image-about"
-            className="image-about"
-          />
+        <div className={styles.imageSectionAbout}>
+          <img src="RashiChakraya.png" alt="image-about" />
         </div>
       </div>
     </div>
