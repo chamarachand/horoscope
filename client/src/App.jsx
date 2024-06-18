@@ -6,7 +6,7 @@ import DetailsPage from "./Pages/DetailsPage";
 import HomePage from "./Pages/HomePage";
 import CustomerReviews from "./Pages/CustomerReviews";
 import AboutUs from "./Pages/AboutUs";
-import { AdminDashboard } from "./Pages/Admin";
+import { AdminLogin } from "./Pages/AdminLogin";
 import { ContactDetails } from "./Pages/ContactDetails";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
@@ -37,7 +37,7 @@ function App() {
               }
             />
 
-            <Route path="/admin" element={<AdminDashboard />} />
+            <Route path="/admin" element={<AdminLogin />} />
           </Routes>
         </Router>
       </QueryClientProvider>
