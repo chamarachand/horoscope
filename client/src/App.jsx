@@ -16,14 +16,6 @@ function App() {
   const [showContactDetailsPage, setShowContactDetailsPage] = useState(false);
 
   return (
-<<<<<<< HEAD
-    <QueryClientProvider client={client}>
-      <div>
-        <Footer/>
-       
-      </div>
-    </QueryClientProvider>
-=======
     <AppContext.Provider value={{ setShowContactDetailsPage }}>
       <QueryClientProvider client={client}>
         <div>
@@ -31,10 +23,10 @@ function App() {
           {showContactDetailsPage ? <ContactDetails /> : <DetailsPage />}
           <CustomerReviews />
           <AboutUs />
+          <Footer/>
         </div>
       </QueryClientProvider>
     </AppContext.Provider>
->>>>>>> 437a957850b5d48114e4f3284139abe7ebdbad49
   );
 }
 
