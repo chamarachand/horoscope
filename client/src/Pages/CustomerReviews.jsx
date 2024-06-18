@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import Axios from "axios";
-import "./CustomerReviews.css";
 import { AddReview } from "./AddReview";
+import styles from "./CustomerReviews.module.css";
 
 const CustomerCard = ({ name, image, rating, review }) => {
   // Function to generate star icons based on rating
@@ -15,11 +15,11 @@ const CustomerCard = ({ name, image, rating, review }) => {
   };
 
   return (
-    <div className="customerCard">
-      <img src={image} alt={name} className="cardImage" />
-      <div className="card-content">
+    <div className={styles.customerCard}>
+      <img src={image} alt={name} className={styles.cardImage} />
+      <div className={styles.cardContent}>
         <h2>{name}</h2>
-        <div className="star-rating">{generateStars()}</div>
+        <div className={styles.starRating}>{generateStars()}</div>
         <p>{review}</p>
       </div>
     </div>
@@ -44,9 +44,9 @@ const CustomerReviewsContainer = () => {
   const toggleAddReview = () => setShowAddReview(!showAddReview);
 
   return (
-    <div className="reviewContainer">
-      <div className="customerReviews">
-        <h1 className="reviews-title">Customer Reviews</h1>
+    <div className={styles.reviewContainer}>
+      <div className={styles.customerReviews}>
+        <h1 className={styles.reviewsTitle}>Customer Reviews</h1>
         {data.map((review, index) => (
           <CustomerCard
             key={index}
@@ -57,8 +57,10 @@ const CustomerReviewsContainer = () => {
           />
         ))}
       </div>
-      <div className="add-review-btn-container">
-        <button onClick={toggleAddReview}>Add Your Review</button>
+      <div className={styles.btnContainer}>
+        <button onClick={toggleAddReview} className={styles.btn}>
+          Add Your Review
+        </button>
       </div>
       {showAddReview && <AddReview toggleAddReview={toggleAddReview} />}
     </div>
