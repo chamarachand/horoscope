@@ -9,6 +9,7 @@ import AboutUs from "./Pages/AboutUs";
 import { AdminLogin } from "./Pages/AdminLogin";
 import { ContactDetails } from "./Pages/ContactDetails";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import Footer from "./components/Footer";
 
 export const AppContext = createContext();
 
@@ -33,6 +34,7 @@ function App() {
                   )}
                   <CustomerReviews />
                   <AboutUs />
+                  <Footer/>
                 </>
               }
             />
