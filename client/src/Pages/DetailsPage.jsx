@@ -2,9 +2,8 @@ import React from "react";
 import { useContext } from "react";
 import { AppContext } from "../App";
 import { useForm } from "react-hook-form";
-import Axios from "axios";
 import { districts, signs } from "../data/data";
-import "./DetailsPage.css";
+import styles from "../styles/DetailsPage.module.css";
 
 function DetailsPage() {
   const { setShowContactDetailsPage } = useContext(AppContext);
@@ -29,8 +28,8 @@ function DetailsPage() {
   };
 
   return (
-    <div className="detailsPage">
-      <div className="wrapper">
+    <div className={styles.detailsPage}>
+      <div className={styles.wrapper}>
         <h1>Get Your Horoscope Report</h1>
 
         {Object.keys(errors).length > 0 && (
@@ -42,9 +41,13 @@ function DetailsPage() {
             {...register("name", { required: true })}
             type="text"
             placeholder="Enter your name"
+            className={styles.inputText}
           />
 
-          <select {...register("sign", { required: true })}>
+          <select
+            {...register("sign", { required: true })}
+            className={styles.select}
+          >
             <option value="" disabled>
               Select Your Sign
             </option>
@@ -55,7 +58,10 @@ function DetailsPage() {
             ))}
           </select>
 
-          <select {...register("gender", { required: true })}>
+          <select
+            {...register("gender", { required: true })}
+            className={styles.select}
+          >
             <option value="" disabled>
               Select Your Gender
             </option>
@@ -63,7 +69,10 @@ function DetailsPage() {
             <option value="Female">Female</option>
           </select>
 
-          <select {...register("birthDistrict", { required: true })}>
+          <select
+            {...register("birthDistrict", { required: true })}
+            className={styles.select}
+          >
             <option value="" disabled>
               Select Your Birth District
             </option>
@@ -78,14 +87,16 @@ function DetailsPage() {
             {...register("birthDate", { required: true })}
             type="date"
             placeholder="Enter Your Birth Date"
+            className={styles.inputDate}
           />
           <input
             {...register("birthTime", { required: true })}
             type="time"
             placeholder="Enter Your Birth Time"
+            className={styles.inputTime}
           />
 
-          <button type="submit" className="btn">
+          <button type="submit" className={styles.btn}>
             Submit
           </button>
         </form>

@@ -1,16 +1,16 @@
 import { useState } from "react";
-import "./AddReview.css";
 import { FaStar } from "react-icons/fa";
+import styles from "../styles/AddReview.module.css";
 
 export const AddReview = ({ toggleAddReview }) => {
   const [rating, setRating] = useState(0);
   const [review, setReview] = useState(null);
 
   return (
-    <div className="add-review-container">
-      <div className="add-review-content">
+    <div className={styles.addReviewContainer}>
+      <div className={styles.addReviewContent}>
         <h1>Add your review</h1>
-        <div className="rating-content">
+        <div className={styles.ratingContent}>
           <p>Rating</p>
           {[...Array(5)].map((star, index) => {
             const currentRating = index + 1;
@@ -31,13 +31,18 @@ export const AddReview = ({ toggleAddReview }) => {
           })}
         </div>
         <textarea
+          className={styles.textarea}
           value={review}
           onChange={(event) => setReview(event.target.value)}
           maxLength={250}
           placeholder="Write your review here.."
         />
-        <button>Submit</button>
-        <button onClick={toggleAddReview}>Exit</button>
+        <div className={styles.btnContainer}>
+          <button onClick={toggleAddReview} className={styles.btn}>
+            Exit
+          </button>
+          <button className={styles.btn}>Submit</button>
+        </div>
       </div>
     </div>
   );

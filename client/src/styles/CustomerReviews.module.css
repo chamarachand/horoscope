@@ -21,7 +21,7 @@
   border-radius: 10px; */
 }
 
-.reviews-title {
+.reviewsTitle {
   width: 100%;
   text-align: center;
   font-size: 2em;
@@ -45,41 +45,55 @@
   margin: 0 auto 20px;
 }
 
-.star-rating {
+.starRating {
   display: flex;
   justify-content: center;
   margin-bottom: 10px;
 }
 
-.star-rating span {
+.starRating span {
   color: #ffd700; /* Yellow color for stars */
   font-size: 24px; /* Adjust star size as needed */
   margin: 0 2px; /* Adjust spacing between stars */
 }
 
-h2 {
+.reviewContainer h2 {
   font-size: 1.2rem;
   margin-bottom: 10px;
 }
 
-p {
+.reviewContainer p {
   font-size: 1rem;
   color: #555;
 }
 
-.add-review-btn-container {
+.btnContainer {
   display: flex;
   justify-content: center;
   margin-top: 0.5rem;
 }
 
-.add-review-btn-container button {
+/*buttons*/  
+.btn {
+  display: block;
   width: auto;
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  text-align: center;
+  margin-right: 10px;
+}
+  
+.btn:hover {
+  background-color: #0056b3;
 }
 
-.add-review-btn-container button:hover {
-  cursor: pointer;
-}
+
 
 
 /* Responsive styles */
@@ -108,12 +122,12 @@ p {
     object-fit: cover;
   }
 
-  .card-content {
+  .cardContent {
     flex: 1;
     padding: 20px;
   }
 
-  h2 {
+  .reviewContainer h2 {
     font-size: 1.2rem;
     margin-bottom: 10px;
   }

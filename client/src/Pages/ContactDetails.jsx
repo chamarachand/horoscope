@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import { useContext } from "react";
 import { AppContext } from "../App";
-import "./ContactDetails.css";
+import styles from "../styles/ContactDetails.module.css";
 
 export const ContactDetails = () => {
   const { setShowContactDetailsPage } = useContext(AppContext);
@@ -19,7 +19,7 @@ export const ContactDetails = () => {
 
   return (
     <div
-      className="container"
+      className={styles.container}
       // style={{
       //   backgroundImage: url(
       //     "../assets/horoscope_background_upscayl_3x_realesrgan-x4plus.jpg"
@@ -29,10 +29,10 @@ export const ContactDetails = () => {
       // }}
     >
       <form onSubmit={handleSubmit(onSubmit)}>
-        <div className="content">
+        <div className={styles.content}>
           <h1>Enter your contact details</h1>
 
-          <div className="user-input">
+          <div className={styles.userInput}>
             <label htmlFor="phone-no">
               Telephone Number (ජංගම දුරකතන අංකය)
             </label>
@@ -42,10 +42,10 @@ export const ContactDetails = () => {
               placeholder="Phone no"
               {...register("phoneNo", { required: "Phone number is required" })}
             />
-            <p className="error">{errors.phoneNo?.message}</p>
+            <p className={styles.error}>{errors.phoneNo?.message}</p>
           </div>
 
-          <div className="user-input">
+          <div className={styles.userInput}>
             <label htmlFor="whatsapp-number">
               Whatsapp number (වට්ස්ඇප් අංකය )
             </label>
@@ -57,10 +57,10 @@ export const ContactDetails = () => {
                 required: "Whatsapp number is required",
               })}
             />
-            <p className="error">{errors.whatsappNo?.message}</p>
+            <p className={styles.error}>{errors.whatsappNo?.message}</p>
           </div>
 
-          <div className="user-input">
+          <div className={styles.userInput}>
             <label htmlFor="email">Email (විද්‍යුත් තැපැල් ලිපිනය )</label>
             <input
               type="email"
@@ -68,17 +68,20 @@ export const ContactDetails = () => {
               placeholder="Email"
               {...register("email", { required: "Email is required" })}
             />
-            <p className="error">{errors.email?.message}</p>
+            <p className={styles.error}>{errors.email?.message}</p>
           </div>
 
-          <div className="buttons">
+          <div className={styles.buttonContainer}>
             <button
               type="button"
               onClick={() => setShowContactDetailsPage(false)}
+              className={styles.btn}
             >
               Back
             </button>
-            <button type="submit">Continue</button>
+            <button type="submit" className={styles.btn}>
+              Continue
+            </button>
           </div>
         </div>
       </form>

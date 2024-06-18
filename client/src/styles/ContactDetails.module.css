@@ -4,11 +4,11 @@
     background-position: center;
 } */
 
-label, input {
+.userInput label, .userInput input {
     display: block;
 }
 
-input {
+.userInput input {
     height: 2.5rem;
     width: 30rem;
     padding: 2px 8px;
@@ -38,30 +38,37 @@ input {
 }
 
 
-.user-input {
+.userInput {
     margin-bottom: 1rem;
 }
 
-.buttons {
+.buttonContainer {
     display: flex;
     justify-content: space-between; 
 
 }
 
-.buttons button {
+/*buttons*/  
+.btn {
+    display: block;
+    width: 100%;
+    padding: 10px;
     background-color: #007bff;
     color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
     font-weight: bold;
     cursor: pointer;
-    margin: 0.8rem 1.5rem;
-
+    text-align: center;
+    margin-right: 10px;
+  }
+    
+.btn:hover {
+    background-color: #0056b3;
 }
 
-button:hover {
-    border: none;
-}
-
-.user-input .error {
+.userInput .error {
     color: crimson;
     font-size: 13px;
     padding: 1.5px 1px 0 1px;
