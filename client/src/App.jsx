@@ -34,7 +34,7 @@ function App() {
                   )}
                   <CustomerReviews />
                   <AboutUs />
-                  <Footer/>
+                  {/* <Footer /> */}
                 </>
               }
             />
