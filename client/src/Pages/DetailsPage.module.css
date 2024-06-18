@@ -23,8 +23,8 @@
 .inputText,
 .select,
 .inputDate,
-.inputTime,
-.btn {
+.inputTime
+{
   display: block;
   width: 100%;
   margin-bottom: 15px;
@@ -35,19 +35,12 @@
 }
 
 /*select*/
-select {
+.select {
   appearance: none;
   background: url('data:image/svg+xml;utf8,<svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>') no-repeat right 10px center/15px;
 }
 
-/*buttons*/
-.detailsPage .btn {
-  background-color: #007bff;
-  color: #fff;
-  font-weight: bold;
-  cursor: pointer;
-}
-  
+/*buttons*/  
 .btn {
   display: block;
   width: 100%;
@@ -57,6 +50,7 @@ select {
   border: none;
   border-radius: 5px;
   font-size: 16px;
+  font-weight: bold;
   cursor: pointer;
   text-align: center;
 }
