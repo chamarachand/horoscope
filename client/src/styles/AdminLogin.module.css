@@ -51,7 +51,7 @@
 }
 
 .welcomeText {
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
 }
 
 .welcomeText h2 {
@@ -83,6 +83,12 @@
     color: crimson;
     font-size: 13px;
     padding: 1.5px 1px 0 1px;
+    height: 0.65rem;
+}
+
+.loginError {
+    color: crimson;
+    font-size: 15px;
     height: 0.65rem;
 }
 
