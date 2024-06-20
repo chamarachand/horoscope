@@ -1,21 +1,27 @@
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import styles from "./AdminNavbar.module.css";
 
 export const AdminNavBar = () => {
+  const navigate = useNavigate();
+
   return (
-    <nav className="">
+    <nav className={styles.navbar}>
       <ul>
         <li>
-          <Link to="/">Home</Link>
+          <Link to="/admin">Home</Link>
         </li>
         <li>
-          <Link to="/horoscopes">Hosroscopes</Link>
+          <Link to="/admin/horoscopes">Hosroscopes</Link>
         </li>
         <li>
-          <Link to="/reviews">Reviews</Link>
+          <Link to="/admin/reviews">Reviews</Link>
         </li>
         <button
+          className={styles.btn}
           onClick={() => {
             localStorage.removeItem("token");
+            navigate("/admin");
             window.location.reload();
           }}
         >

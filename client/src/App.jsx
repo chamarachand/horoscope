@@ -48,7 +48,7 @@ function App() {
               element={token ? <AdminDashboard /> : <AdminLogin />}
             />
             <Route
-              path="/admin/horoscope"
+              path="/admin/horoscopes"
               element={token ? <HosroscopeSubmissions /> : <AdminLogin />}
             />
             <Route
