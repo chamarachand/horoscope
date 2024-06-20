@@ -13,6 +13,14 @@ export const AdminNavBar = () => {
         <li>
           <Link to="/reviews">Reviews</Link>
         </li>
+        <button
+          onClick={() => {
+            localStorage.removeItem("token");
+            window.location.reload();
+          }}
+        >
+          Logout
+        </button>
       </ul>
     </nav>
   );

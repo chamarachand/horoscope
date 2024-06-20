@@ -15,14 +15,6 @@ export const AdminDashboard = () => {
       >
         <h1>Welcome Admin</h1>
         <p>This page is under construction</p>
-        <button
-          onClick={() => {
-            localStorage.removeItem("token");
-            window.location.reload();
-          }}
-        >
-          Logout
-        </button>
       </div>
     </>
   );

@@ -8,6 +8,7 @@ import CustomerReviews from "./Pages/CustomerReviews";
 import AboutUs from "./Pages/AboutUs";
 import { AdminLogin } from "./Pages/AdminLogin";
 import { AdminDashboard } from "./Pages/AdminDashboard";
+import { HosroscopeSubmissions } from "./Pages/HoroscopeSubmissions";
 import { ContactDetails } from "./Pages/ContactDetails";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import Footer from "./components/Footer";
@@ -44,6 +45,10 @@ function App() {
             <Route
               path="/admin"
               element={token ? <AdminDashboard /> : <AdminLogin />}
+            />
+            <Route
+              path="/admin/horoscope"
+              element={token ? <HosroscopeSubmissions /> : <AdminLogin />}
             />
           </Routes>
         </Router>
