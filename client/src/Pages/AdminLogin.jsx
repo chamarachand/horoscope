@@ -2,25 +2,19 @@ import React, { useState } from "react";
 import styles from "../styles/AdminLogin.module.css";
 import Axios from "axios";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
-import * as yup from "yup";
+import { loginSchema } from "../utils/loginJoiSchema";
 import { yupResolver } from "@hookform/resolvers/yup";
 
 export const AdminLogin = () => {
   const [isLogging, setIsLogging] = useState(false);
   const [loginError, setLogInError] = useState("");
 
-  const schema = yup.object().shape({
-    username: yup.string().required().min(5).max(20),
-    password: yup.string().required().min(5).max(128),
-  });
-
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm({
-    resolver: yupResolver(schema),
+    resolver: yupResolver(loginSchema),
   });
 
   const onSubmit = (data) => {
@@ -33,9 +27,8 @@ export const AdminLogin = () => {
 
     Axios.post("http://localhost:3000/auth", admin)
       .then((res) => {
-        console.log(res);
         localStorage.setItem("token", res.data.token);
-        alert("Login successfull");
+        window.location.reload(); // Look for better approach if possible
       })
       .catch((error) => {
         console.log("An error occured", error);
