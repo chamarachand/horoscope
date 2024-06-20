@@ -33,9 +33,8 @@ export const AdminLogin = () => {
 
     Axios.post("http://localhost:3000/auth", admin)
       .then((res) => {
-        console.log(res);
         localStorage.setItem("token", res.data.token);
-        alert("Login successfull");
+        window.location.reload(); // Look for better approach if possible
       })
       .catch((error) => {
         console.log("An error occured", error);
