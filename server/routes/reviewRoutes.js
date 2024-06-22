@@ -12,7 +12,7 @@ router.get("/count/:count", async (req, res) => {
     return res.status(400).send({ error: "Invalid count" });
 
   try {
-    const reviews = await Review.find({ accepted: true })
+    const reviews = await Review.find({ reviewed: true, accepted: true })
       .sort({ rating: -1 })
       .limit(count)
       .select("-_id");
