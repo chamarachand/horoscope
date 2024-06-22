@@ -23,10 +23,10 @@ router.get("/count/:count", async (req, res) => {
   }
 });
 
-// Get pending reviews (not accepted)
+// Get pending reviews (not reviewed)
 router.get("/pending", async (req, res) => {
   try {
-    const reviews = await Review.find({ accepted: false });
+    const reviews = await Review.find({ reviewed: false });
     return res.status(200).send(reviews);
   } catch (error) {
     console.log(error);
