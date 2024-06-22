@@ -1,6 +1,9 @@
+import Axios from "axios";
 import styles from "../styles/ReviewCard.module.css";
 
-export const ReviewCard = ({ name, comment }) => {
+export const ReviewCard = ({ name, comment, refetch }) => {
+  const handleAcceptBtnClick = () => {};
+
   return (
     <div className={styles.cardContainer}>
       <h2>{name}</h2>

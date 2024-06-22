@@ -30,6 +30,7 @@ export const ReviewSubmissions = () => {
                 key={index}
                 name={review.name}
                 comment={review.comment}
+                refetch={refetch}
               />
             );
           })}
