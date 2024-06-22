@@ -28,6 +28,7 @@ export const ReviewSubmissions = () => {
             return (
               <ReviewCard
                 key={index}
+                reviewId={review._id}
                 name={review.name}
                 comment={review.comment}
                 refetch={refetch}

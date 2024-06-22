@@ -52,14 +52,17 @@ router.post("/", async (req, res) => {
 });
 
 // Accept review
-router.patch("accept/id/:id", async (req, res) => {
+router.patch("/accept/id/:id", async (req, res) => {
   const { id } = req.params;
 
   if (!mongoose.Types.ObjectId.isValid(id))
     return res.status(400).send({ error: "Invalid review id" });
 
   try {
-    const review = await Review.findByIdAndUpdate(id, { accepted: true });
+    const review = await Review.findByIdAndUpdate(id, {
+      reviewed: true,
+      accepted: true,
+    });
 
     if (!review)
       return res
