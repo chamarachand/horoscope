@@ -5,6 +5,11 @@
     padding: 10px;
 }
 
+.comment {
+    height: 6rem;
+    overflow-y: auto;
+}
+
 .btnContainer {
     display: flex;
     justify-content: center;

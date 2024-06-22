@@ -1,14 +1,10 @@
 import styles from "../styles/ReviewCard.module.css";
 
-export const ReviewCard = () => {
+export const ReviewCard = ({ name, comment }) => {
   return (
     <div className={styles.cardContainer}>
-      <h2>Wimukthi Perera</h2>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam
-        similique asperiores, ipsa consequuntur nobis laborum ea placeat nisi
-        vel sunt dicta recusandae sed aperiam animi!
-      </p>
+      <h2>{name}</h2>
+      <p className={styles.comment}>{comment}</p>
       <div className={styles.btnContainer}>
         <button className={`${styles.btn} ${styles.acceptBtn}`} id="acceptBtn">
           Accept
