@@ -3,7 +3,7 @@
     bottom: 0;
     left: 0;
     right: 0;
-    background-color: rgba(200, 200, 200, 0.8);
+    background-color: rgba(0, 0, 0, 0.6);
     position: fixed;
     display: flex;
     justify-content: center;
@@ -16,7 +16,6 @@
     border-radius: 10px;
     box-shadow: rgba(0, 0, 0, 0.35);
     padding: 15px;
-    position: relative;
 } 
 
 .inputContent {
@@ -25,6 +24,7 @@
 
 .inputContent label {
     display: block;
+    margin-bottom: 0.5rem;
 }
 
 .inputContent textarea {
@@ -33,7 +33,29 @@
     border-radius: 5px;
     outline: none;
     font-size: 1rem;
-    font-family: Georgia, 'Times New Roman', Times, serif
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    padding: 5px;
+}
+
+.crossBtnContainer {
+    display: flex;
+    justify-content: right;
+}
+
+.crossBtn {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.crossBtn img {
+    width: 1.4rem;
+}
+
+.error {
+    font-size: 0.8rem;
+    color: crimson;
+    height: 1rem;
 }
 
 .btnContainer {
@@ -42,11 +64,22 @@
 }
 
 .cancelBtn, .continueBtn {
-    padding: 4px;
+    padding: 7px;
     margin: 4px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.cancelBtn:hover {
+    color: beige;
+    background-color: green;
+}
+
+.continueBtn:hover {
+    color: beige;
+    background-color: crimson;
 }
 
 /* .btn {
