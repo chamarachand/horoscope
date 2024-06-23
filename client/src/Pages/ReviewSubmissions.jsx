@@ -7,7 +7,7 @@ import Axios from "axios";
 import styles from "../styles/ReviewSubmissions.module.css";
 
 export const ReviewSubmissions = () => {
-  const [showConfirmDeleteBox, setShowConfirmDeleteBox] = useState(false);
+  // const [showConfirmDeleteBox, setShowConfirmDeleteBox] = useState(false);
 
   const { data, isLoading, isError, refetch } = useQuery({
     queryKey: ["Review"],
@@ -35,16 +35,15 @@ export const ReviewSubmissions = () => {
                 reviewId={review._id}
                 name={review.name}
                 comment={review.comment}
-                setShowConfirmDeleteBox={setShowConfirmDeleteBox}
                 refetch={refetch}
               />
             );
           })}
         </div>
       </div>
-      {showConfirmDeleteBox && (
+      {/* {showConfirmDeleteBox && (
         <ConfirmDeleteBox setShowConfirmDeleteBox={setShowConfirmDeleteBox} />
-      )}
+      )} */}
     </div>
   );
 };

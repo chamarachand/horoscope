@@ -1,14 +1,11 @@
 import { useState } from "react";
 import Axios from "axios";
+import { ConfirmDeleteBox } from "./ConfirmDeleteBox";
 import styles from "../styles/ReviewCard.module.css";
 
-export const ReviewCard = ({
-  reviewId,
-  name,
-  comment,
-  refetch,
-  setShowConfirmDeleteBox,
-}) => {
+export const ReviewCard = ({ reviewId, name, comment, refetch }) => {
+  const [showConfirmDeleteBox, setShowConfirmDeleteBox] = useState(false);
+
   const handleAcceptBtnClick = () => {
     Axios.patch(`http://localhost:3000/reviews/accept/id/${reviewId}`)
       .then(() => {
@@ -40,6 +37,13 @@ export const ReviewCard = ({
           Reject
         </button>
       </div>
+      {showConfirmDeleteBox && (
+        <ConfirmDeleteBox
+          reviewId={reviewId}
+          setShowConfirmDeleteBox={setShowConfirmDeleteBox}
+          refetch={refetch}
+        />
+      )}
     </div>
   );
 };

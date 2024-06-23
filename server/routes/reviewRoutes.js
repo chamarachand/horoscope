@@ -81,7 +81,7 @@ router.patch("/accept/id/:id", async (req, res) => {
 });
 
 // Reject a review
-router.patch("/id/:id", async (req, res) => {
+router.patch("/reject/id/:id", async (req, res) => {
   const { id } = req.params;
   const { reason } = req.query;
 

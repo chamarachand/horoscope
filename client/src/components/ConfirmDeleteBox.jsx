@@ -1,7 +1,12 @@
 import { useState } from "react";
+import Axios from "axios";
 import styles from "../styles/ConfirmDeleteBox.module.css";
 
-export const ConfirmDeleteBox = ({ setShowConfirmDeleteBox }) => {
+export const ConfirmDeleteBox = ({
+  reviewId,
+  setShowConfirmDeleteBox,
+  refetch,
+}) => {
   const [rejectReason, setRejectReason] = useState(null);
   const [error, setError] = useState(null);
 
@@ -11,6 +16,14 @@ export const ConfirmDeleteBox = ({ setShowConfirmDeleteBox }) => {
 
     if (rejectReason?.length < 5)
       return setError("Please provide a valid and descriptive reason");
+
+    Axios.patch(`http://localhost:3000/reviews/reject/id/${reviewId}`)
+      .then(() => {
+        console.log("Rejected success");
+        setShowConfirmDeleteBox(false);
+        refetch();
+      })
+      .catch((error) => console.log("Error", error));
   };
 
   return (
