@@ -1,9 +1,12 @@
 .content {
     padding-top: 4rem;
+    background-color: #282424;
+    height: 100vh;
 }
 
 .content h1 {
     text-align: center;
+    color: #F1F8E9;
 }
 
 .reviewsContainer {

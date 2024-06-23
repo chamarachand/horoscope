@@ -1,7 +1,5 @@
-import { useState } from "react";
 import { AdminNavBar } from "./AdminNavbar";
 import { ReviewCard } from "../components/ReviewCard";
-import { ConfirmDeleteBox } from "../components/ConfirmDeleteBox";
 import { useQuery } from "@tanstack/react-query";
 import Axios from "axios";
 import styles from "../styles/ReviewSubmissions.module.css";

@@ -3,7 +3,7 @@
     bottom: 0;
     left: 0;
     right: 0;
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: rgba(0, 0, 0, 0.7);
     position: fixed;
     display: flex;
     justify-content: center;
@@ -12,7 +12,7 @@
 
 .popupContainer {
     width: 25rem;
-    background-color: wheat;
+    background-color: lightgray;
     border-radius: 10px;
     box-shadow: rgba(0, 0, 0, 0.35);
     padding: 15px;
