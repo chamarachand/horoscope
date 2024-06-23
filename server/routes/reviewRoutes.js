@@ -12,7 +12,7 @@ router.get("/count/:count", async (req, res) => {
     return res.status(400).send({ error: "Invalid count" });
 
   try {
-    const reviews = await Review.find({ accepted: true })
+    const reviews = await Review.find({ reviewed: true, accepted: true })
       .sort({ rating: -1 })
       .limit(count)
       .select("-_id");
@@ -23,10 +23,10 @@ router.get("/count/:count", async (req, res) => {
   }
 });
 
-// Get pending reviews (not accepted)
+// Get pending reviews (not reviewed)
 router.get("/pending", async (req, res) => {
   try {
-    const reviews = await Review.find({ accepted: false });
+    const reviews = await Review.find({ reviewed: false });
     return res.status(200).send(reviews);
   } catch (error) {
     console.log(error);
@@ -52,14 +52,21 @@ router.post("/", async (req, res) => {
 });
 
 // Accept review
-router.patch("accept/id/:id", async (req, res) => {
+router.patch("/accept/id/:id", async (req, res) => {
   const { id } = req.params;
 
   if (!mongoose.Types.ObjectId.isValid(id))
     return res.status(400).send({ error: "Invalid review id" });
 
   try {
-    const review = await Review.findByIdAndUpdate(id, { accepted: true });
+    const review = await Review.findByIdAndUpdate(
+      id,
+      {
+        reviewed: true,
+        accepted: true,
+      },
+      { new: true }
+    );
 
     if (!review)
       return res
@@ -67,6 +74,42 @@ router.patch("accept/id/:id", async (req, res) => {
         .send({ error: "Review with the given id not found" });
 
     res.status(200).send({ message: "Review accepted successfully" });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Internal server error");
+  }
+});
+
+// Reject a review
+router.patch("/reject/id/:id", async (req, res) => {
+  const { id } = req.params;
+  const { reason } = req.body;
+
+  if (!mongoose.Types.ObjectId.isValid(id))
+    return res.status(400).send({ error: "Invalid review id" });
+
+  if (!reason) return res.status(400).send({ error: "Reason not provided" });
+
+  if (reason.length < 5 || reason.length > 1024)
+    return res.status(400).send({ error: "Invalid reason length" });
+
+  try {
+    const review = await Review.findByIdAndUpdate(
+      id,
+      {
+        reviewed: true,
+        accepted: false,
+        rejectReason: reason,
+      },
+      { new: true }
+    );
+
+    if (!review)
+      return res
+        .status(400)
+        .send({ error: "Review with the given id not found" });
+
+    return res.status(200).send({ message: "Review rejected successfully" });
   } catch (error) {
     console.error(error);
     res.status(500).send("Internal server error");
