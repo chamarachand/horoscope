@@ -44,7 +44,8 @@ export const ConfirmDeleteBox = ({
         <div>
           <div className={styles.inputContent}>
             <label htmlFor="textarea">
-              {`Please enter the reason for rejecting the review from ${name}`}
+              Please enter the reason for rejecting the review from{" "}
+              <strong>{name}</strong>
             </label>
             <textarea
               className={styles.textarea}
