@@ -17,7 +17,9 @@ export const ConfirmDeleteBox = ({
     if (rejectReason?.length < 5)
       return setError("Please provide a valid and descriptive reason");
 
-    Axios.patch(`http://localhost:3000/reviews/reject/id/${reviewId}`)
+    Axios.patch(`http://localhost:3000/reviews/reject/id/${reviewId}`, {
+      reason: rejectReason,
+    })
       .then(() => {
         console.log("Rejected success");
         setShowConfirmDeleteBox(false);

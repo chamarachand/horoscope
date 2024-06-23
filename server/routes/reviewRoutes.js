@@ -83,10 +83,15 @@ router.patch("/accept/id/:id", async (req, res) => {
 // Reject a review
 router.patch("/reject/id/:id", async (req, res) => {
   const { id } = req.params;
-  const { reason } = req.query;
+  const { reason } = req.body;
 
   if (!mongoose.Types.ObjectId.isValid(id))
     return res.status(400).send({ error: "Invalid review id" });
+
+  if (!reason) return res.status(400).send({ error: "Reason not provided" });
+
+  if (reason.length < 5 || reason.length > 1024)
+    return res.status(400).send({ error: "Invalid reason length" });
 
   try {
     const review = await Review.findByIdAndUpdate(
