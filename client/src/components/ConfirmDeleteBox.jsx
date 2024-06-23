@@ -4,6 +4,7 @@ import styles from "../styles/ConfirmDeleteBox.module.css";
 
 export const ConfirmDeleteBox = ({
   reviewId,
+  name,
   setShowConfirmDeleteBox,
   refetch,
 }) => {
@@ -43,7 +44,7 @@ export const ConfirmDeleteBox = ({
         <div>
           <div className={styles.inputContent}>
             <label htmlFor="textarea">
-              Please enter the reason for rejecting the review
+              {`Please enter the reason for rejecting the review from ${name}`}
             </label>
             <textarea
               className={styles.textarea}

@@ -40,6 +40,7 @@ export const ReviewCard = ({ reviewId, name, comment, refetch }) => {
       {showConfirmDeleteBox && (
         <ConfirmDeleteBox
           reviewId={reviewId}
+          name={name}
           setShowConfirmDeleteBox={setShowConfirmDeleteBox}
           refetch={refetch}
         />
