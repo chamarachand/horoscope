@@ -1,10 +1,14 @@
+import { useState } from "react";
 import { AdminNavBar } from "./AdminNavbar";
 import { ReviewCard } from "../components/ReviewCard";
+import { ConfirmDeleteBox } from "../components/ConfirmDeleteBox";
 import { useQuery } from "@tanstack/react-query";
 import Axios from "axios";
 import styles from "../styles/ReviewSubmissions.module.css";
 
 export const ReviewSubmissions = () => {
+  const [showConfirmDeleteBox, setShowConfirmDeleteBox] = useState(false);
+
   const { data, isLoading, isError, refetch } = useQuery({
     queryKey: ["Review"],
     queryFn: () => {
@@ -31,12 +35,16 @@ export const ReviewSubmissions = () => {
                 reviewId={review._id}
                 name={review.name}
                 comment={review.comment}
+                setShowConfirmDeleteBox={setShowConfirmDeleteBox}
                 refetch={refetch}
               />
             );
           })}
         </div>
       </div>
+      {showConfirmDeleteBox && (
+        <ConfirmDeleteBox setShowConfirmDeleteBox={setShowConfirmDeleteBox} />
+      )}
     </div>
   );
 };

@@ -1,7 +1,14 @@
+import { useState } from "react";
 import Axios from "axios";
 import styles from "../styles/ReviewCard.module.css";
 
-export const ReviewCard = ({ reviewId, name, comment, refetch }) => {
+export const ReviewCard = ({
+  reviewId,
+  name,
+  comment,
+  refetch,
+  setShowConfirmDeleteBox,
+}) => {
   const handleAcceptBtnClick = () => {
     Axios.patch(`http://localhost:3000/reviews/accept/id/${reviewId}`)
       .then(() => {
@@ -9,6 +16,10 @@ export const ReviewCard = ({ reviewId, name, comment, refetch }) => {
         refetch();
       })
       .catch((error) => console.log("Error", error));
+  };
+
+  const handleRejectBtnClick = () => {
+    setShowConfirmDeleteBox(true);
   };
 
   return (
@@ -24,7 +35,7 @@ export const ReviewCard = ({ reviewId, name, comment, refetch }) => {
         </button>
         <button
           className={`${styles.btn} ${styles.rejectBtn}`}
-          onClick={handleAcceptBtnClick}
+          onClick={handleRejectBtnClick}
         >
           Reject
         </button>
