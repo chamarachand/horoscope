@@ -59,10 +59,14 @@ router.patch("/accept/id/:id", async (req, res) => {
     return res.status(400).send({ error: "Invalid review id" });
 
   try {
-    const review = await Review.findByIdAndUpdate(id, {
-      reviewed: true,
-      accepted: true,
-    });
+    const review = await Review.findByIdAndUpdate(
+      id,
+      {
+        reviewed: true,
+        accepted: true,
+      },
+      { new: true }
+    );
 
     if (!review)
       return res
@@ -70,6 +74,37 @@ router.patch("/accept/id/:id", async (req, res) => {
         .send({ error: "Review with the given id not found" });
 
     res.status(200).send({ message: "Review accepted successfully" });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Internal server error");
+  }
+});
+
+// Reject a review
+router.patch("/id/:id", async (req, res) => {
+  const { id } = req.params;
+  const { reason } = req.query;
+
+  if (!mongoose.Types.ObjectId.isValid(id))
+    return res.status(400).send({ error: "Invalid review id" });
+
+  try {
+    const review = await Review.findByIdAndUpdate(
+      id,
+      {
+        reviewed: true,
+        accepted: false,
+        rejectReason: reason,
+      },
+      { new: true }
+    );
+
+    if (!review)
+      return res
+        .status(400)
+        .send({ error: "Review with the given id not found" });
+
+    return res.status(200).send({ message: "Review rejected successfully" });
   } catch (error) {
     console.error(error);
     res.status(500).send("Internal server error");
