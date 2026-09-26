@@ -1,103 +1,780 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+.home {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  color: #ffffff;
+
+  background:
+    radial-gradient(
+      circle at 75% 45%,
+      rgba(118, 72, 210, 0.25),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 10% 90%,
+      rgba(221, 171, 70, 0.12),
+      transparent 28%
+    ),
+    linear-gradient(
+      135deg,
+      #04020a 0%,
+      #090513 45%,
+      #14091f 100%
+    );
 }
 
-.wrapper{
-    background-image: url(HomePageImage.png);
-    height: 100vh;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-color: black;
+/* ========================================
+   STARS
+======================================== */
 
-  /* flex-direction: column;
+.stars {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+
+  background-image:
+    radial-gradient(
+      circle,
+      rgba(255, 255, 255, 0.9) 1px,
+      transparent 1.5px
+    ),
+    radial-gradient(
+      circle,
+      rgba(255, 255, 255, 0.5) 1px,
+      transparent 1.5px
+    );
+
+  background-size:
+    90px 90px,
+    150px 150px;
+
+  animation: starsMove 60s linear infinite;
+
+  opacity: 0.35;
+}
+
+@keyframes starsMove {
+  from {
+    background-position:
+      0 0,
+      0 0;
+  }
+
+  to {
+    background-position:
+      500px 500px,
+      -400px -300px;
+  }
+}
+
+/* ========================================
+   BACKGROUND GLOW
+======================================== */
+
+.glow1,
+.glow2 {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.glow1 {
+  width: 450px;
+  height: 450px;
+
+  right: -100px;
+  top: 5%;
+
+  background: rgba(112, 65, 210, 0.2);
+
+  filter: blur(110px);
+
+  animation: glowFloat 8s ease-in-out infinite;
+}
+
+.glow2 {
+  width: 350px;
+  height: 350px;
+
+  left: -100px;
+  bottom: -100px;
+
+  background: rgba(218, 165, 65, 0.1);
+
+  filter: blur(100px);
+
+  animation: glowFloat 10s ease-in-out infinite reverse;
+}
+
+@keyframes glowFloat {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+
+  50% {
+    transform: translate(30px, -30px);
+  }
+}
+
+/* ========================================
+   HERO
+======================================== */
+
+.hero {
+  position: relative;
+  z-index: 2;
+
+  width: 90%;
+  max-width: 1250px;
+
+  min-height: 100vh;
+
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
   align-items: center;
+
+  gap: 70px;
+}
+
+/* ========================================
+   LEFT CONTENT
+======================================== */
+
+.heroText {
+  animation: heroAppear 1s ease-out forwards;
+}
+
+@keyframes heroAppear {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ========================================
+   BADGE
+======================================== */
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+
+  padding: 9px 17px;
+
+  margin-bottom: 25px;
+
+  border: 1px solid rgba(255, 255, 255, 0.14);
+
+  border-radius: 50px;
+
+  background: rgba(255, 255, 255, 0.05);
+
+  color: #e5c16e;
+
+  font-size: 12px;
+
+  font-weight: 600;
+
+  letter-spacing: 2px;
+
+  backdrop-filter: blur(12px);
+
+  box-shadow:
+    0 0 25px rgba(215, 171, 78, 0.05);
+}
+
+/* ========================================
+   HEADING
+======================================== */
+
+.heroText h1 {
+  margin: 0;
+
+  max-width: 700px;
+
+  font-size: clamp(45px, 6vw, 76px);
+
+  line-height: 1.04;
+
+  letter-spacing: -3px;
+
+  font-weight: 700;
+}
+
+.heroText h1 span {
+  display: block;
+
+  margin-top: 8px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #d3a348,
+      #ffe7a0,
+      #b47cf0,
+      #d3a348
+    );
+
+  background-size: 300% auto;
+
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  color: transparent;
+
+  animation: textGradient 6s linear infinite;
+}
+
+@keyframes textGradient {
+  to {
+    background-position: 300% center;
+  }
+}
+
+/* ========================================
+   DESCRIPTION
+======================================== */
+
+.heroText p {
+  max-width: 620px;
+
+  margin: 28px 0 0;
+
+  color: #aaa2b8;
+
+  font-size: 17px;
+
+  line-height: 1.8;
+}
+
+/* ========================================
+   BUTTONS
+======================================== */
+
+.buttons {
+  display: flex;
+
+  align-items: center;
+
+  gap: 15px;
+
+  margin-top: 35px;
+}
+
+.primaryBtn,
+.secondaryBtn {
+  position: relative;
+
+  padding: 15px 23px;
+
+  border-radius: 11px;
+
+  font-size: 14px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    background 0.3s ease;
+}
+
+/* PRIMARY */
+
+.primaryBtn {
+  border: none;
+
+  color: #17100a;
+
+  background:
+    linear-gradient(
+      135deg,
+      #d5a54e,
+      #f4d47f
+    );
+
+  box-shadow:
+    0 10px 35px rgba(215, 166, 73, 0.2);
+}
+
+.primaryBtn span {
+  display: inline-block;
+
+  margin-left: 9px;
+
+  transition: transform 0.3s ease;
+}
+
+.primaryBtn:hover {
+  transform: translateY(-4px);
+
+  box-shadow:
+    0 15px 45px rgba(215, 166, 73, 0.35);
+}
+
+.primaryBtn:hover span {
+  transform: translateX(5px);
+}
+
+/* SECONDARY */
+
+.secondaryBtn {
+  color: #ffffff;
+
+  background: rgba(255, 255, 255, 0.04);
+
+  border: 1px solid rgba(255, 255, 255, 0.15);
+
+  backdrop-filter: blur(10px);
+}
+
+.secondaryBtn:hover {
+  background: rgba(255, 255, 255, 0.09);
+
+  transform: translateY(-4px);
+}
+
+/* ========================================
+   STATS
+======================================== */
+
+.stats {
+  display: flex;
+
+  align-items: center;
+
+  gap: 25px;
+
+  margin-top: 50px;
+}
+
+.stats div:not(.line) {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 4px;
+}
+
+.stats strong {
+  color: #e5c06c;
+
+  font-size: 22px;
+
+  font-weight: 700;
+}
+
+.stats small {
+  color: #81798d;
+
+  font-size: 11px;
+
+  letter-spacing: 0.3px;
+}
+
+.line {
+  width: 1px;
+
+  height: 35px;
+
+  background: rgba(255, 255, 255, 0.12);
+}
+
+/* ========================================
+   COSMIC AREA
+======================================== */
+
+.cosmos {
+  position: relative;
+
+  width: 500px;
+
+  height: 500px;
+
+  margin: auto;
+
+  display: flex;
+
+  align-items: center;
+
   justify-content: center;
-  height: 100vh;
-  text-align: center; */
+
+  animation: cosmosAppear 1.5s ease-out forwards;
 }
 
-.wrapper::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: black;
-    opacity: 0.5; /* Adjust the opacity as needed */
-    z-index: 0;
-}
-  
-.containerHome,
-.contentHome {
-    position: relative;
-    z-index: 1;
-    color: white; /* Ensure text is visible on dark background */
+@keyframes cosmosAppear {
+  from {
+    opacity: 0;
+
+    transform:
+      scale(0.65)
+      rotate(-15deg);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      scale(1)
+      rotate(0deg);
+  }
 }
 
-.containerHome{
-    margin-bottom: 20px; 
+/* ========================================
+   COSMIC RINGS
+======================================== */
+
+.ring {
+  position: absolute;
+
+  border-radius: 50%;
+
+  pointer-events: none;
 }
 
-.containerHome h1{
-    font-size: 50px;
-    color: white;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+.ring1 {
+  width: 100%;
+  height: 100%;
+
+  border: 1px solid rgba(221, 181, 92, 0.2);
+
+  animation:
+    rotateClockwise
+    30s
+    linear
+    infinite;
 }
-/* .container-home h1::after{
-    content:"";
-    height: 6px;
-    width:auto;
-    background-color:white;
-    border-radius: 6px;
-    position: relative;
-    display: block;
-    margin: auto;
-} */
-.contentHome{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+
+.ring2 {
+  width: 78%;
+  height: 78%;
+
+  border: 1px solid rgba(166, 113, 236, 0.25);
+
+  animation:
+    rotateCounter
+    22s
+    linear
+    infinite;
+}
+
+.ring3 {
+  width: 58%;
+  height: 58%;
+
+  border: 1px solid rgba(221, 181, 92, 0.3);
+
+  animation:
+    rotateClockwise
+    15s
+    linear
+    infinite;
+}
+
+@keyframes rotateClockwise {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes rotateCounter {
+  from {
+    transform: rotate(360deg);
+  }
+
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+/* ========================================
+   MOON
+======================================== */
+
+.moon {
+  position: relative;
+  z-index: 5;
+
+  width: 210px;
+  height: 210px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border-radius: 50%;
+
+  font-size: 95px;
+
+  background:
+    radial-gradient(
+      circle at 35% 28%,
+      #fff9e5 0%,
+      #e5cc91 40%,
+      #9a8050 75%,
+      #55432d 100%
+    );
+
+  box-shadow:
+    0 0 45px rgba(239, 207, 130, 0.4),
+    0 0 100px rgba(239, 207, 130, 0.15),
+    inset -25px -20px 40px rgba(45, 32, 20, 0.35);
+
+  animation: moonFloat 5s ease-in-out infinite;
+}
+
+@keyframes moonFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-13px);
+  }
+}
+
+/* ========================================
+   ZODIAC SYMBOLS
+======================================== */
+
+.zodiac {
+  position: absolute;
+
+  width: 44px;
+  height: 44px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border-radius: 50%;
+
+  color: #e4bf6b;
+
+  background: rgba(7, 4, 15, 0.85);
+
+  border: 1px solid rgba(228, 191, 107, 0.3);
+
+  font-size: 19px;
+
+  box-shadow:
+    0 0 25px rgba(228, 191, 107, 0.1);
+
+  backdrop-filter: blur(8px);
+
+  z-index: 6;
+
+  animation: zodiacFloat 4s ease-in-out infinite;
+}
+
+.z1 {
+  top: 4%;
+  left: 46%;
+}
+
+.z2 {
+  top: 24%;
+  right: 2%;
+
+  animation-delay: 0.5s;
+}
+
+.z3 {
+  bottom: 18%;
+  right: 7%;
+
+  animation-delay: 1s;
+}
+
+.z4 {
+  bottom: 2%;
+  left: 45%;
+
+  animation-delay: 1.5s;
+}
+
+.z5 {
+  bottom: 19%;
+  left: 4%;
+
+  animation-delay: 2s;
+}
+
+.z6 {
+  top: 24%;
+  left: 2%;
+
+  animation-delay: 2.5s;
+}
+
+@keyframes zodiacFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* ========================================
+   TABLET
+======================================== */
+
+@media (max-width: 1000px) {
+  .hero {
+    grid-template-columns: 1fr;
+
     text-align: center;
+
+    padding: 80px 0;
+  }
+
+  .heroText {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+  }
+
+  .heroText p {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .buttons {
+    justify-content: center;
+  }
+
+  .stats {
+    justify-content: center;
+  }
+
+  .cosmos {
+    width: 420px;
+    height: 420px;
+  }
+
+  .moon {
+    width: 175px;
+    height: 175px;
+
+    font-size: 80px;
+  }
 }
 
-.contentHome p {
-    font-size: 25px;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    color:white;
-    margin-left: 30vh;
-    margin-right: 30vh;
-}
+/* ========================================
+   MOBILE
+======================================== */
 
-@media screen and (max-width: 900px) {
-    .containerHome h1{
-        font-size: 30px;
-    }
-    .contentHome p{
-        font-size: 15px;
-        margin-top: 5vh;
-        margin-left: 5vh;
-        margin-right: 5vh;
-    }
-} 
-    
-@media screen and (max-width: 768px) {
-    .containerHome h1{
-        font-size: 30px;
-    }
-    .contentHome p{
-        font-size: 15px;
-        margin-top: 15vh;
-        margin-left: 5vh;
-        margin-right: 5vh;
-       
-    }    
+@media (max-width: 600px) {
+  .hero {
+    width: 92%;
+
+    padding:
+      60px
+      0
+      80px;
+  }
+
+  .badge {
+    font-size: 10px;
+
+    letter-spacing: 1.5px;
+  }
+
+  .heroText h1 {
+    font-size: 42px;
+
+    letter-spacing: -2px;
+  }
+
+  .heroText p {
+    font-size: 15px;
+
+    line-height: 1.7;
+  }
+
+  .buttons {
+    flex-direction: column;
+
+    width: 100%;
+  }
+
+  .primaryBtn,
+  .secondaryBtn {
+    width: 100%;
+  }
+
+  .stats {
+    gap: 13px;
+
+    margin-top: 40px;
+  }
+
+  .stats strong {
+    font-size: 17px;
+  }
+
+  .stats small {
+    font-size: 9px;
+  }
+
+  .line {
+    height: 28px;
+  }
+
+  .cosmos {
+    width: 300px;
+    height: 300px;
+  }
+
+  .moon {
+    width: 125px;
+    height: 125px;
+
+    font-size: 58px;
+  }
+
+  .zodiac {
+    width: 34px;
+    height: 34px;
+
+    font-size: 14px;
+  }
+
+  .glow1 {
+    width: 250px;
+    height: 250px;
+  }
+
+  .glow2 {
+    width: 200px;
+    height: 200px;
+  }
 }
