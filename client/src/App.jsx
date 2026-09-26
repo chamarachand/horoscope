@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import Home from "./newPages/Home";
+import PanchangaPage from "./newPages/PanchangaPage";
 import HoroscopePage from "./newPages/HoroscopePage";
 import HoroscopeResult from "./newPages/HoroscopeResult";
 import Contact from "./newPages/Contact";
@@ -16,7 +17,19 @@ function App() {
             NEW THARURAHAS HOME
         ========================================== */}
 
-        <Route path="/" element={<Home />} />
+        <Route
+          path="/"
+          element={<Home />}
+        />
+
+        {/* ==========================================
+            PANCHANGA LITHA
+        ========================================== */}
+
+        <Route
+          path="/panchanga"
+          element={<PanchangaPage />}
+        />
 
         {/* ==========================================
             HOROSCOPE FORM

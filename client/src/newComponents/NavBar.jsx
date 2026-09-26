@@ -17,6 +17,7 @@ const Navbar = ({
   const content = {
     en: {
       home: "Home",
+      panchanga: "Panchanga",
       horoscope: "Horoscope",
       zodiac: "Zodiac Signs",
       about: "About Us",
@@ -26,6 +27,7 @@ const Navbar = ({
 
     si: {
       home: "මුල් පිටුව",
+      panchanga: "පංචාංගය",
       horoscope: "කේන්දරය",
       zodiac: "රාශි",
       about: "අප ගැන",
@@ -52,6 +54,23 @@ const Navbar = ({
     closeMobileMenu();
 
     navigate("/");
+
+    setTimeout(() => {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+    }, 100);
+  };
+
+  // ==========================================
+  // GO TO PANCHANGA
+  // ==========================================
+
+  const goToPanchanga = () => {
+    closeMobileMenu();
+
+    navigate("/panchanga");
 
     setTimeout(() => {
       window.scrollTo({
@@ -231,6 +250,17 @@ const Navbar = ({
             )}
           >
             {t.home}
+          </button>
+
+          {/* PANCHANGA */}
+
+          <button
+            onClick={goToPanchanga}
+            className={desktopLink(
+              location.pathname === "/panchanga"
+            )}
+          >
+            {t.panchanga}
           </button>
 
           {/* HOROSCOPE */}
@@ -432,7 +462,7 @@ const Navbar = ({
       <div
         className={`overflow-hidden border-t transition-all duration-300 lg:hidden ${
           mobileMenuOpen
-            ? "max-h-[500px] opacity-100"
+            ? "max-h-[600px] opacity-100"
             : "max-h-0 border-transparent opacity-0"
         } ${
           isDark
@@ -459,6 +489,26 @@ const Navbar = ({
             }`}
           >
             <span>{t.home}</span>
+            <span>→</span>
+          </button>
+
+          {/* PANCHANGA */}
+
+          <button
+            onClick={goToPanchanga}
+            className={`flex items-center justify-between border-b py-4 text-left text-sm ${
+              isDark
+                ? "border-white/5"
+                : "border-black/5"
+            } ${
+              location.pathname === "/panchanga"
+                ? "text-[#d6ad55]"
+                : isDark
+                ? "text-white/70"
+                : "text-black/60"
+            }`}
+          >
+            <span>{t.panchanga}</span>
             <span>→</span>
           </button>
 
