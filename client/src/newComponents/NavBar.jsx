@@ -1,17 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
-const Navbar = ({
-  language,
-  setLanguage,
-  theme,
-  setTheme,
-}) => {
+const Navbar = ({ language, setLanguage, theme, setTheme }) => {
   const navigate = useNavigate();
   const location = useLocation();
 
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
   const isDark = theme === "dark";
 
   const content = {
@@ -24,7 +18,6 @@ const Navbar = ({
       reviews: "Reviews",
       contact: "Contact",
     },
-
     si: {
       home: "මුල් පිටුව",
       panchanga: "පංචාංගය",
@@ -36,150 +29,84 @@ const Navbar = ({
     },
   };
 
-  const t = content[language];
+  const t = content[language] || content.si;
 
-  // ==========================================
-  // CLOSE MOBILE MENU
-  // ==========================================
+  // Restore the saved language whenever the page changes.
+  useEffect(() => {
+    const savedLanguage = localStorage.getItem("tharuRahasLanguage");
+
+    if (
+      (savedLanguage === "en" || savedLanguage === "si") &&
+      savedLanguage !== language
+    ) {
+      setLanguage(savedLanguage);
+    }
+  }, [location.pathname, language, setLanguage]);
+
+  // Save the selected language and update the current page.
+  const changeLanguage = (newLanguage) => {
+    localStorage.setItem("tharuRahasLanguage", newLanguage);
+    setLanguage(newLanguage);
+  };
 
   const closeMobileMenu = () => {
     setMobileMenuOpen(false);
   };
 
-  // ==========================================
-  // GO TO HOME
-  // ==========================================
-
-  const goHome = () => {
-    closeMobileMenu();
-
-    navigate("/");
-
-    setTimeout(() => {
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth",
-      });
-    }, 100);
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
   };
 
-  // ==========================================
-  // GO TO PANCHANGA
-  // ==========================================
-
-  const goToPanchanga = () => {
+  const navigateTo = (path) => {
     closeMobileMenu();
+    navigate(path);
 
-    navigate("/panchanga");
-
-    setTimeout(() => {
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth",
-      });
-    }, 100);
+    setTimeout(scrollToTop, 100);
   };
-
-  // ==========================================
-  // GO TO ZODIAC
-  // ==========================================
-
-  const goToZodiac = () => {
-    closeMobileMenu();
-
-    navigate("/zodiac");
-
-    setTimeout(() => {
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth",
-      });
-    }, 100);
-  };
-
-  // ==========================================
-  // GO TO SECTION
-  // ==========================================
 
   const goToSection = (id) => {
     closeMobileMenu();
 
     if (location.pathname === "/") {
-      const element = document.getElementById(id);
-
-      if (element) {
-        element.scrollIntoView({
-          behavior: "smooth",
-          block: "start",
-        });
-      }
-
+      document.getElementById(id)?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
       return;
     }
 
     navigate("/");
 
     setTimeout(() => {
-      const element = document.getElementById(id);
-
-      if (element) {
-        element.scrollIntoView({
-          behavior: "smooth",
-          block: "start",
-        });
-      }
+      document.getElementById(id)?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
     }, 300);
   };
 
-  // ==========================================
-  // GO TO HOROSCOPE
-  // ==========================================
-
-  const goToHoroscope = () => {
-    closeMobileMenu();
-
-    navigate("/horoscope");
-
-    setTimeout(() => {
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth",
-      });
-    }, 100);
-  };
-
-  // ==========================================
-  // GO TO CONTACT
-  // ==========================================
-
-  const goToContact = () => {
-    closeMobileMenu();
-
-    navigate("/contact");
-
-    setTimeout(() => {
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth",
-      });
-    }, 100);
-  };
-
-  // ==========================================
-  // ACTIVE CLASSES
-  // ==========================================
-
-  const desktopLink = (active) => {
-    if (active) {
-      return "whitespace-nowrap text-sm text-[#d6ad55] transition";
-    }
-
-    return `whitespace-nowrap text-sm transition ${
-      isDark
+  const desktopLink = (active) =>
+    `whitespace-nowrap text-sm transition ${
+      active
+        ? "text-[#d6ad55]"
+        : isDark
         ? "text-white/60 hover:text-[#d6ad55]"
         : "text-black/55 hover:text-[#a8791f]"
     }`;
-  };
+
+  const mobileLink = (active) =>
+    `flex items-center justify-between border-b py-4 text-left text-sm transition ${
+      isDark ? "border-white/5" : "border-black/5"
+    } ${
+      active
+        ? "text-[#d6ad55]"
+        : isDark
+        ? "text-white/70"
+        : "text-black/60"
+    }`;
 
   return (
     <header
@@ -190,13 +117,9 @@ const Navbar = ({
       }`}
     >
       <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-5 lg:px-8">
-
-        {/* ==========================================
-            LOGO
-        ========================================== */}
-
+        {/* LOGO */}
         <button
-          onClick={goHome}
+          onClick={() => navigateTo("/")}
           className="group flex min-w-0 items-center gap-2 sm:gap-3"
         >
           <div
@@ -212,22 +135,15 @@ const Navbar = ({
           <div className="min-w-0 text-left">
             <h1
               className={`truncate text-lg font-bold tracking-wide transition-colors sm:text-xl ${
-                isDark
-                  ? "text-white"
-                  : "text-[#17130d]"
+                isDark ? "text-white" : "text-[#17130d]"
               }`}
             >
-              Tharu
-              <span className="text-[#d6ad55]">
-                Rahas
-              </span>
+              Tharu<span className="text-[#d6ad55]">Rahas</span>
             </h1>
 
             <p
               className={`text-[8px] uppercase tracking-[2px] sm:text-[9px] sm:tracking-[3px] ${
-                isDark
-                  ? "text-white/40"
-                  : "text-black/40"
+                isDark ? "text-white/40" : "text-black/40"
               }`}
             >
               තරු රහස්
@@ -235,58 +151,38 @@ const Navbar = ({
           </div>
         </button>
 
-        {/* ==========================================
-            DESKTOP NAVIGATION
-        ========================================== */}
-
+        {/* DESKTOP NAVIGATION */}
         <nav className="hidden items-center gap-5 lg:flex xl:gap-7">
-
-          {/* HOME */}
-
           <button
-            onClick={goHome}
-            className={desktopLink(
-              location.pathname === "/"
-            )}
+            onClick={() => navigateTo("/")}
+            className={desktopLink(location.pathname === "/")}
           >
             {t.home}
           </button>
 
-          {/* PANCHANGA */}
-
           <button
-            onClick={goToPanchanga}
-            className={desktopLink(
-              location.pathname === "/panchanga"
-            )}
+            onClick={() => navigateTo("/panchanga")}
+            className={desktopLink(location.pathname === "/panchanga")}
           >
             {t.panchanga}
           </button>
 
-          {/* HOROSCOPE */}
-
           <button
-            onClick={goToHoroscope}
+            onClick={() => navigateTo("/horoscope")}
             className={desktopLink(
               location.pathname === "/horoscope" ||
-              location.pathname === "/horoscope/result"
+                location.pathname === "/horoscope/result"
             )}
           >
             {t.horoscope}
           </button>
 
-          {/* ZODIAC */}
-
           <button
-            onClick={goToZodiac}
-            className={desktopLink(
-              location.pathname === "/zodiac"
-            )}
+            onClick={() => navigateTo("/zodiac")}
+            className={desktopLink(location.pathname === "/zodiac")}
           >
             {t.zodiac}
           </button>
-
-          {/* ABOUT */}
 
           <button
             onClick={() => goToSection("about")}
@@ -295,8 +191,6 @@ const Navbar = ({
             {t.about}
           </button>
 
-          {/* REVIEWS */}
-
           <button
             onClick={() => goToSection("reviews")}
             className={desktopLink(false)}
@@ -304,47 +198,31 @@ const Navbar = ({
             {t.reviews}
           </button>
 
-          {/* CONTACT */}
-
           <button
-            onClick={goToContact}
-            className={desktopLink(
-              location.pathname === "/contact"
-            )}
+            onClick={() => navigateTo("/contact")}
+            className={desktopLink(location.pathname === "/contact")}
           >
             {t.contact}
           </button>
         </nav>
 
-        {/* ==========================================
-            RIGHT SIDE
-        ========================================== */}
-
+        {/* RIGHT SIDE */}
         <div className="flex shrink-0 items-center gap-1.5 sm:gap-2">
-
           {/* THEME BUTTON */}
-
           <button
-            onClick={() =>
-              setTheme(isDark ? "light" : "dark")
-            }
+            onClick={() => setTheme(isDark ? "light" : "dark")}
             className={`flex h-9 w-9 items-center justify-center rounded-full border text-sm transition duration-300 sm:h-10 sm:w-10 ${
               isDark
                 ? "border-white/10 bg-white/5 hover:border-[#d6ad55]/40"
                 : "border-black/10 bg-black/5 hover:border-[#d6ad55]/50"
             }`}
             aria-label="Toggle theme"
-            title={
-              isDark
-                ? "Switch to light mode"
-                : "Switch to dark mode"
-            }
+            title={isDark ? "Switch to light mode" : "Switch to dark mode"}
           >
             {isDark ? "☀️" : "🌙"}
           </button>
 
           {/* DESKTOP LANGUAGE */}
-
           <div
             className={`hidden items-center gap-1 rounded-full border p-1 sm:flex ${
               isDark
@@ -353,7 +231,7 @@ const Navbar = ({
             }`}
           >
             <button
-              onClick={() => setLanguage("si")}
+              onClick={() => changeLanguage("si")}
               className={`rounded-full px-3 py-1.5 text-xs transition ${
                 language === "si"
                   ? "bg-[#d6ad55] font-semibold text-[#100b05]"
@@ -366,7 +244,7 @@ const Navbar = ({
             </button>
 
             <button
-              onClick={() => setLanguage("en")}
+              onClick={() => changeLanguage("en")}
               className={`rounded-full px-3 py-1.5 text-xs transition ${
                 language === "en"
                   ? "bg-[#d6ad55] font-semibold text-[#100b05]"
@@ -380,12 +258,9 @@ const Navbar = ({
           </div>
 
           {/* MOBILE LANGUAGE */}
-
           <button
             onClick={() =>
-              setLanguage(
-                language === "si" ? "en" : "si"
-              )
+              changeLanguage(language === "si" ? "en" : "si")
             }
             className={`flex h-9 min-w-9 items-center justify-center rounded-full border px-2 text-xs font-semibold transition sm:hidden ${
               isDark
@@ -396,14 +271,9 @@ const Navbar = ({
             {language === "si" ? "EN" : "සිං"}
           </button>
 
-          {/* ==========================================
-              MOBILE MENU BUTTON
-          ========================================== */}
-
+          {/* MOBILE MENU BUTTON */}
           <button
-            onClick={() =>
-              setMobileMenuOpen(!mobileMenuOpen)
-            }
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className={`flex h-9 w-9 items-center justify-center rounded-full border transition lg:hidden ${
               isDark
                 ? "border-white/10 bg-white/5 text-white hover:border-[#d6ad55]/40"
@@ -413,52 +283,29 @@ const Navbar = ({
             aria-expanded={mobileMenuOpen}
           >
             <div className="flex flex-col gap-1.5">
-
               <span
                 className={`block h-0.5 w-5 transition duration-300 ${
-                  mobileMenuOpen
-                    ? "translate-y-2 rotate-45"
-                    : ""
-                } ${
-                  isDark
-                    ? "bg-white"
-                    : "bg-black"
-                }`}
+                  mobileMenuOpen ? "translate-y-2 rotate-45" : ""
+                } ${isDark ? "bg-white" : "bg-black"}`}
               />
 
               <span
                 className={`block h-0.5 w-5 transition duration-300 ${
-                  mobileMenuOpen
-                    ? "opacity-0"
-                    : "opacity-100"
-                } ${
-                  isDark
-                    ? "bg-white"
-                    : "bg-black"
-                }`}
+                  mobileMenuOpen ? "opacity-0" : "opacity-100"
+                } ${isDark ? "bg-white" : "bg-black"}`}
               />
 
               <span
                 className={`block h-0.5 w-5 transition duration-300 ${
-                  mobileMenuOpen
-                    ? "-translate-y-2 -rotate-45"
-                    : ""
-                } ${
-                  isDark
-                    ? "bg-white"
-                    : "bg-black"
-                }`}
+                  mobileMenuOpen ? "-translate-y-2 -rotate-45" : ""
+                } ${isDark ? "bg-white" : "bg-black"}`}
               />
-
             </div>
           </button>
         </div>
       </div>
 
-      {/* ==========================================
-          MOBILE MENU
-      ========================================== */}
-
+      {/* MOBILE MENU */}
       <div
         className={`overflow-hidden border-t transition-all duration-300 lg:hidden ${
           mobileMenuOpen
@@ -471,138 +318,69 @@ const Navbar = ({
         }`}
       >
         <nav className="mx-auto flex max-w-7xl flex-col px-4 pb-5 pt-3 sm:px-5">
-
-          {/* HOME */}
-
           <button
-            onClick={goHome}
-            className={`flex items-center justify-between border-b py-4 text-left text-sm ${
-              isDark
-                ? "border-white/5"
-                : "border-black/5"
-            } ${
-              location.pathname === "/"
-                ? "text-[#d6ad55]"
-                : isDark
-                ? "text-white/70"
-                : "text-black/60"
-            }`}
+            onClick={() => navigateTo("/")}
+            className={mobileLink(location.pathname === "/")}
           >
             <span>{t.home}</span>
             <span>→</span>
           </button>
 
-          {/* PANCHANGA */}
-
           <button
-            onClick={goToPanchanga}
-            className={`flex items-center justify-between border-b py-4 text-left text-sm ${
-              isDark
-                ? "border-white/5"
-                : "border-black/5"
-            } ${
-              location.pathname === "/panchanga"
-                ? "text-[#d6ad55]"
-                : isDark
-                ? "text-white/70"
-                : "text-black/60"
-            }`}
+            onClick={() => navigateTo("/panchanga")}
+            className={mobileLink(location.pathname === "/panchanga")}
           >
             <span>{t.panchanga}</span>
             <span>→</span>
           </button>
 
-          {/* HOROSCOPE */}
-
           <button
-            onClick={goToHoroscope}
-            className={`flex items-center justify-between border-b py-4 text-left text-sm ${
-              isDark
-                ? "border-white/5"
-                : "border-black/5"
-            } ${
+            onClick={() => navigateTo("/horoscope")}
+            className={mobileLink(
               location.pathname === "/horoscope" ||
-              location.pathname === "/horoscope/result"
-                ? "text-[#d6ad55]"
-                : isDark
-                ? "text-white/70"
-                : "text-black/60"
-            }`}
+                location.pathname === "/horoscope/result"
+            )}
           >
             <span>{t.horoscope}</span>
             <span>→</span>
           </button>
 
-          {/* ZODIAC */}
-
           <button
-            onClick={goToZodiac}
-            className={`flex items-center justify-between border-b py-4 text-left text-sm ${
-              isDark
-                ? "border-white/5"
-                : "border-black/5"
-            } ${
-              location.pathname === "/zodiac"
-                ? "text-[#d6ad55]"
-                : isDark
-                ? "text-white/70"
-                : "text-black/60"
-            }`}
+            onClick={() => navigateTo("/zodiac")}
+            className={mobileLink(location.pathname === "/zodiac")}
           >
             <span>{t.zodiac}</span>
             <span>→</span>
           </button>
 
-          {/* ABOUT */}
-
           <button
             onClick={() => goToSection("about")}
-            className={`flex items-center justify-between border-b py-4 text-left text-sm ${
-              isDark
-                ? "border-white/5 text-white/70"
-                : "border-black/5 text-black/60"
-            }`}
+            className={mobileLink(false)}
           >
             <span>{t.about}</span>
             <span>→</span>
           </button>
 
-          {/* REVIEWS */}
-
           <button
             onClick={() => goToSection("reviews")}
-            className={`flex items-center justify-between border-b py-4 text-left text-sm ${
-              isDark
-                ? "border-white/5 text-white/70"
-                : "border-black/5 text-black/60"
-            }`}
+            className={mobileLink(false)}
           >
             <span>{t.reviews}</span>
             <span>→</span>
           </button>
 
-          {/* CONTACT */}
-
           <button
-            onClick={goToContact}
-            className={`flex items-center justify-between py-4 text-left text-sm ${
-              location.pathname === "/contact"
-                ? "text-[#d6ad55]"
-                : isDark
-                ? "text-white/70"
-                : "text-black/60"
-            }`}
+            onClick={() => navigateTo("/contact")}
+            className={mobileLink(location.pathname === "/contact")}
           >
             <span>{t.contact}</span>
             <span>→</span>
           </button>
 
           {/* MOBILE LANGUAGE SWITCH */}
-
           <div className="mt-4 flex gap-2">
-
             <button
-              onClick={() => setLanguage("si")}
+              onClick={() => changeLanguage("si")}
               className={`flex-1 rounded-xl border py-3 text-sm transition ${
                 language === "si"
                   ? "border-[#d6ad55]/40 bg-[#d6ad55]/10 text-[#d6ad55]"
@@ -615,7 +393,7 @@ const Navbar = ({
             </button>
 
             <button
-              onClick={() => setLanguage("en")}
+              onClick={() => changeLanguage("en")}
               className={`flex-1 rounded-xl border py-3 text-sm transition ${
                 language === "en"
                   ? "border-[#d6ad55]/40 bg-[#d6ad55]/10 text-[#d6ad55]"
@@ -626,7 +404,6 @@ const Navbar = ({
             >
               English
             </button>
-
           </div>
         </nav>
       </div>
