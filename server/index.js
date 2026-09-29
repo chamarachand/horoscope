@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const app = express();
 const cors = require("cors");
@@ -8,7 +9,7 @@ const adminRoutes = require("./routes/adminRoutes");
 const authRoutes = require("./routes/auth");
 
 // connection
-connection();
+// connection();
 
 // Middleware
 app.use(express.json());
@@ -20,3 +21,5 @@ app.use("/auth", authRoutes);
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => console.log(`Listening to port ${port}..`));
+
+module.exports = app;
